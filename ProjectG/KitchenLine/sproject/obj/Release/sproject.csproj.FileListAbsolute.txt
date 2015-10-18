@@ -1,0 +1,5 @@
+C:\Users\TNP\documents\visual studio 2013\Projects\sproject\sproject\bin\sproject.dll.config
+C:\Users\TNP\documents\visual studio 2013\Projects\sproject\sproject\bin\sproject.dll
+C:\Users\TNP\documents\visual studio 2013\Projects\sproject\sproject\bin\sproject.pdb
+C:\Users\TNP\documents\visual studio 2013\Projects\sproject\sproject\obj\Release\sproject.dll
+C:\Users\TNP\documents\visual studio 2013\Projects\sproject\sproject\obj\Release\sproject.pdb
