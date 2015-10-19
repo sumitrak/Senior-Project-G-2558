@@ -401,8 +401,9 @@ namespace sproject
         {
             string constr = WebConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString;
             SqlConnection con = new SqlConnection(constr);
-
             con.Open();
+
+            string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
             SqlDataAdapter dtAd;
             DataTable dt = new DataTable();
             string txtPID = "";
@@ -429,10 +430,10 @@ namespace sproject
             SqlCommand comm = new SqlCommand("INSERT INTO project VALUES( " + txtPID + ", '" + PNameTH.Text + "', '" + PNameENG.Text + "', '" + DropDownList1.SelectedValue.ToString() + "', '" + DropDownList2.SelectedValue.ToString() + "', '" + DropDownList3.SelectedValue.ToString() + "', '"+null+"', '"+null+"')", con);
             comm.ExecuteNonQuery();
 
-            SqlCommand com2 = new SqlCommand("INSERT INTO CPE01 VALUES(" + txtPID + ", ' 1 ', 'wait', '" + DateTime.Now + "')", con);
+            SqlCommand com2 = new SqlCommand("INSERT INTO CPE01 VALUES(" + txtPID + ", ' 1 ', 'wait', '" + date + "')", con);
             com2.ExecuteNonQuery();
 
-            SqlCommand com33 = new SqlCommand("INSERT INTO history VALUES(" + txtPID + ", '" + PNameTH.Text + "', '1', '" + Session["loginSID"].ToString() + "', 'Create', '" + DateTime.Now + "', 'wait'  )", con);
+            SqlCommand com33 = new SqlCommand("INSERT INTO history VALUES(" + txtPID + ", '" + PNameTH.Text + "', '1', '" + Session["loginSID"].ToString() + "', 'Create', '" + date + "', 'wait'  )", con);
             com33.ExecuteNonQuery();
 
             con.Close();
