@@ -1,0 +1,19 @@
+c:\users\tnp\documents\visual studio 2013\Projects\sproject\sproject\bin\sproject.dll.config
+c:\users\tnp\documents\visual studio 2013\Projects\sproject\sproject\bin\sproject.dll
+c:\users\tnp\documents\visual studio 2013\Projects\sproject\sproject\bin\sproject.pdb
+c:\users\tnp\documents\visual studio 2013\Projects\sproject\sproject\obj\Debug\sproject.csprojResolveAssemblyReference.cache
+c:\users\tnp\documents\visual studio 2013\Projects\sproject\sproject\obj\Debug\sproject.dll
+c:\users\tnp\documents\visual studio 2013\Projects\sproject\sproject\obj\Debug\sproject.pdb
+C:\Users\TNP\documents\visual studio 2013\Projects\sproject\sproject\bin\AjaxControlToolkit.dll
+D:\WebDB\KitchenLine\sproject\bin\sproject.dll.config
+D:\WebDB\KitchenLine\sproject\bin\sproject.dll
+D:\WebDB\KitchenLine\sproject\bin\sproject.pdb
+D:\WebDB\KitchenLine\sproject\obj\Debug\sproject.csprojResolveAssemblyReference.cache
+D:\WebDB\KitchenLine\sproject\obj\Debug\sproject.dll
+D:\WebDB\KitchenLine\sproject\obj\Debug\sproject.pdb
+D:\ProjectG_1\ProjectG_1\sproject\bin\sproject.dll.config
+D:\ProjectG_1\ProjectG_1\sproject\bin\sproject.dll
+D:\ProjectG_1\ProjectG_1\sproject\bin\sproject.pdb
+D:\ProjectG_1\ProjectG_1\sproject\obj\Debug\sproject.csprojResolveAssemblyReference.cache
+D:\ProjectG_1\ProjectG_1\sproject\obj\Debug\sproject.dll
+D:\ProjectG_1\ProjectG_1\sproject\obj\Debug\sproject.pdb
