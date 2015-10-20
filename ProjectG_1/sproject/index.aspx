@@ -107,7 +107,7 @@
         
         </style>
 </head>
-<body style="">
+<body style="height: 605px">
     <form id="form1" runat="server">
     <div class="cover">
         <div style="height: 54px">
@@ -174,8 +174,6 @@
         </div>
         </div>
 
-    </form>
-    
         <div class="footer">
 
             <br />
@@ -184,5 +182,12 @@
 &nbsp;AND&nbsp; G , Naresuan University<br />
     </div>
 
-    </body>
+        
+
+    </form>
+    
+        <div style="text-align: right; height: 28px;">
+            Page 1</div>
+    
+        </body>
 </html>

@@ -451,7 +451,7 @@ namespace sproject
 
             con.Close();
 
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Messagebox", "alert('ส่งแบบฟอร์มเรียบร้อย');", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Messagebox", "alert('ส่งแบบฟอร์มเรียบร้อย   (MID = 1)');", true);
         }
 
         private void updateData()

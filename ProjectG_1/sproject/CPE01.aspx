@@ -108,6 +108,12 @@
 
 
         
+        #form1 {
+            height: 1153px;
+        }
+
+
+        
         </style>
 </head>
 <body style="height: 1050px">
@@ -510,12 +516,12 @@
         Copyright © 2015 By Kitchen Line
         <br />
 &nbsp;AND&nbsp; G , Naresuan University</div>
-
+        <br />
+           <div style="text-align: right; height: 28px;">
+            Page 5</div>
+    
     </form>
 
-
-
     
-
     </body>
 </html>

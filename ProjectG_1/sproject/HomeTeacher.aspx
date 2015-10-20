@@ -193,8 +193,9 @@
         <br />
 &nbsp;AND&nbsp; G , Naresuan University</div>
 
-
-
+    <br />
+    <div style="text-align: right; height: 28px;">
+            Page 6</div>
     
 
     </body>
