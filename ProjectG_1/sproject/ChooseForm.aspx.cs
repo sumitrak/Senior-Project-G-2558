@@ -18,11 +18,12 @@ namespace sproject
 
            
 
-            string status = "";
             string constr = WebConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString;
             SqlConnection con = new SqlConnection(constr);
 
             //CPE01
+
+            string status = "";
             con.Open();
 
             SqlCommand com = new SqlCommand(" SELECT status FROM CPE01 WHERE PID='" + Session["sesPID"] + "' ", con);
