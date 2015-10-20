@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.UI;
@@ -311,7 +312,11 @@ namespace sproject
                                                         error1.Text = "";
                                                         if (whatPID1 == "" && whatPID2 == "" && whatPID3 == "")
                                                         {
-                                                            createForm();
+                                                            CheckTextbox(); //เช๊คชื่อโครงงาน && รหัสนิสิต
+                                                            if (error3.Text == "" && error2.Text == "" && error1.Text == "")
+                                                            {
+                                                                createForm();
+                                                            }
                                                         }
                                                         else { error1.Text = "มีนิสิตที่มีโครงงานแล้ว"; }
                                                     }
@@ -325,14 +330,24 @@ namespace sproject
                                                         error1.Text = "";
                                                         if (whatPID1 == "" && whatPID2 == "" && whatPID3 == "")
                                                         {
-                                                            createForm();
+                                                            CheckTextbox(); //เช๊คชื่อโครงงาน && รหัสนิสิต
+                                                            if (error3.Text == "" && error2.Text == "" && error1.Text == "")
+                                                            {
+                                                                createForm();
+                                                            } 
                                                         }
                                                         else { error1.Text = "มีนิสิตที่มีโครงงานแล้ว"; }
                                                     }
                                                     else { error1.Text = "รหัสนิสิตซ้ำกัน"; }
                                                 }
                                                 else if(amoutMember == 1)
-                                                { createForm(); }
+                                                {
+                                                    CheckTextbox(); //เช๊คชื่อโครงงาน && รหัสนิสิต
+                                                    if (error3.Text == "" && error2.Text == "" && error1.Text == "")
+                                                    {
+                                                        createForm();
+                                                    }
+                                                }
                                             }
 
                                             else if (haveProject == true)
@@ -354,10 +369,23 @@ namespace sproject
                                                         if (whatPID1 != "" && whatPID2 != "" && whatPID3 != "") // ดูว่ามีโปรเจคยัง
                                                         {
                                                             if (whatPID1 == whatPID2 && whatPID1 == whatPID3 && whatPID2 == whatPID3) // ดูว่าโปรเจคตรงกันมั๊ย
-                                                            { updateData(); }
+                                                            {
+                                                                CheckTextbox(); //เช๊คชื่อโครงงาน && รหัสนิสิต
+                                                                if (error3.Text == "" && error2.Text == "" && error1.Text == "")
+                                                                {
+                                                                    updateData();
+                                                                }
+                                                            }
                                                             else { error1.Text = "มีนิสิตที่อยู่ในโครงงานอื่น"; }
                                                         }
-                                                        else { updateData(); }
+                                                        else
+                                                        {
+                                                            CheckTextbox(); //เช๊คชื่อโครงงาน && รหัสนิสิต
+                                                            if (error3.Text == "" && error2.Text == "" && error1.Text == "")
+                                                            {
+                                                                updateData();
+                                                            }
+                                                        }
                                                     }
                                                     else { error1.Text = "รหัสนิสิตซ้ำกัน"; }
                                                 }
@@ -370,16 +398,35 @@ namespace sproject
                                                             if (whatPID1 != "" && whatPID2 != "" && whatPID3 != "")
                                                             {
                                                                 if (whatPID1 == whatPID2 && whatPID1 == whatPID3 && whatPID2 == whatPID3)
-                                                                { updateData(); }
+                                                                {
+                                                                    CheckTextbox(); //เช๊คชื่อโครงงาน && รหัสนิสิต
+                                                                    if (error3.Text == "" && error2.Text == "" && error1.Text == "")
+                                                                    {
+                                                                        updateData();
+                                                                    }
+                                                                }
                                                                 else { error1.Text = "มีนิสิตที่อยู่ในโครงงานอื่น"; }
                                                             }
-                                                            else { updateData(); }
+                                                            else
+                                                            {
+                                                                CheckTextbox(); //เช๊คชื่อโครงงาน && รหัสนิสิต
+                                                                if (error3.Text == "" && error2.Text == "" && error1.Text == "")
+                                                                {
+                                                                    updateData();
+                                                                }
+                                                            }
                                                         }
                                                     }
                                                     else { error1.Text = "รหัสนิสิตซ้ำกัน"; }
                                                 }
                                                 else if (amoutMember == 1)
-                                                { updateData(); }
+                                                {
+                                                    CheckTextbox(); //เช๊คชื่อโครงงาน && รหัสนิสิต
+                                                    if (error3.Text == "" && error2.Text == "" && error1.Text == "")
+                                                    {
+                                                        updateData();
+                                                    }
+                                                }
                                             }
                                         }
                                         else { error2.Text = "อาจารย์ที่ปรึกษา กับ อาจารย์ที่ปรึกษาร่วม ซ้ำกัน"; }
@@ -467,12 +514,12 @@ namespace sproject
         {
             string constr = WebConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString;
             SqlConnection con = new SqlConnection(constr);
-
             con.Open();
 
             string whatPID1 = "";
             string whatPID2 = "";
             string whatPID3 = "";
+            string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
             SqlCommand cmd = new SqlCommand("SELECT PID FROM student WHERE SID= '" + SID1.Text + "' ", con);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -497,7 +544,7 @@ namespace sproject
             con.Close();
 
             con.Open();
-            SqlCommand com33 = new SqlCommand("INSERT INTO history VALUES(" + whatPID1 + ", '" + PNameTH.Text + "', '1', '" + Session["loginSID"].ToString() + "', 'Edit', '" + DateTime.Now + "', 'wait' )", con);
+            SqlCommand com33 = new SqlCommand("INSERT INTO history VALUES(" + whatPID1 + ", '" + PNameTH.Text + "', '1', '" + Session["loginSID"].ToString() + "', 'Edit', '" + date + "', 'wait' )", con);
             com33.ExecuteNonQuery();
             con.Close();
 
@@ -506,7 +553,7 @@ namespace sproject
             SqlCommand com34 = new SqlCommand("UPDATE project SET PID= " + whatPID1 + ", PNameTH='" + PNameTH.Text + "', PNameENG='" + PNameENG.Text + "', advisorID='" + DropDownList1.SelectedValue.ToString() + "', coAdvisorID='" + DropDownList2.SelectedValue.ToString() + "', committee1ID='" + DropDownList3.SelectedValue.ToString() + "' WHERE PID = '" + whatPID1 + "' ", con);
             com34.ExecuteNonQuery();
 
-            SqlCommand com44 = new SqlCommand("UPDATE CPE01 SET PID= " + whatPID1 + ", FormNo='1', status='wait', date='" + DateTime.Now + "'  WHERE PID = '" + whatPID1 + "' ", con);
+            SqlCommand com44 = new SqlCommand("UPDATE CPE01 SET PID= " + whatPID1 + ", FormNo='1', status='wait', date='" + date + "'  WHERE PID = '" + whatPID1 + "' ", con);
             com44.ExecuteNonQuery();
 
             SqlCommand com3 = new SqlCommand("UPDATE student SET PID= " + whatPID1 + " WHERE SID = '" + SID1.Text + "' ", con);
@@ -582,6 +629,7 @@ namespace sproject
                 STel2.Text = "";
                 SEmail2.Text = "";
             }
+            CheckTextbox(); //เช๊คชื่อโครงงาน && รหัสนิสิต
         }
 
         protected void Button5_Click(object sender, EventArgs e)
@@ -609,6 +657,40 @@ namespace sproject
                 SName3.Text = "";
                 STel3.Text = "";
                 SEmail3.Text = "";
+            }
+            CheckTextbox(); //เช๊คชื่อโครงงาน && รหัสนิสิต
+        }
+
+        private void CheckTextbox()
+        {
+            Regex rx1 = new Regex("^[ก-๙]+$");
+            Regex rx2 = new Regex("^[0-9]+$");
+            Regex rx3 = new Regex("^[a-zA-Z]+$");
+
+            if (rx1.IsMatch(PNameTH.Text) && rx3.IsMatch(PNameENG.Text))
+            {
+                error3.Text = "";
+                if (rx2.IsMatch(SID2.Text) || SID2.Text == "")
+                {
+                    error1.Text = "";
+                    if (rx2.IsMatch(SID3.Text) || SID3.Text == "")
+                    {
+                        error1.Text = "";
+                    }
+                    else
+                    {
+                        error1.Text = "กรุณากรอกรหัสนิสิตให้ถูกต้อง";
+                    }
+                }
+                else
+                {
+                    error1.Text = "กรุณากรอกรหัสนิสิตให้ถูกต้อง";
+                }
+
+            }
+            else
+            {
+                error3.Text = "กรุณาใส่ชื่อโครงงานให้ถูกต้อง";
             }
         }
                 
