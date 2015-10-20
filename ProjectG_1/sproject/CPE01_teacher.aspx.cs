@@ -173,16 +173,15 @@ namespace sproject
             SqlConnection con = new SqlConnection(constr);
             con.Open();
 
+            string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
+
             SqlCommand com3 = new SqlCommand("UPDATE CPE01 SET status= 'approve' WHERE PID = '" + Session["whatPID"].ToString() + "' ", con);
             com3.ExecuteNonQuery();
-
             con.Close();
 
             con.Open();
-
-            SqlCommand com1 = new SqlCommand("INSERT INTO history VALUES(" + Session["whatPID"].ToString() + ", '" + PNameTH.Text + "', '1', '" + Session["loginSID"].ToString() + "', 'Approve', '" + DateTime.Now + "', 'approve'  )", con);
+            SqlCommand com1 = new SqlCommand("INSERT INTO history VALUES(" + Session["whatPID"].ToString() + ", '" + PNameTH.Text + "', '1', '" + Session["loginSID"].ToString() + "', 'Approve', '" + date + "', 'approve'  )", con);
             com1.ExecuteNonQuery();
-
             con.Close();
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Messagebox", "alert('อนุมัติโครงงานแล้ว');", true);
@@ -195,16 +194,15 @@ namespace sproject
             SqlConnection con = new SqlConnection(constr);
             con.Open();
 
+            string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
+
             SqlCommand com3 = new SqlCommand("UPDATE CPE01 SET status= 'reject' WHERE PID = '" + Session["whatPID"].ToString() + "' ", con);
             com3.ExecuteNonQuery();
-
             con.Close();
 
             con.Open();
-
-            SqlCommand com1 = new SqlCommand("INSERT INTO history VALUES(" + Session["whatPID"].ToString() + ", '" + PNameTH.Text + "', '1', '" + Session["loginSID"].ToString() + "', 'Reject', '" + DateTime.Now + "', 'reject'  )", con);
+            SqlCommand com1 = new SqlCommand("INSERT INTO history VALUES(" + Session["whatPID"].ToString() + ", '" + PNameTH.Text + "', '1', '" + Session["loginSID"].ToString() + "', 'Reject', '" + date + "', 'reject'  )", con);
             com1.ExecuteNonQuery();
-
             con.Close();
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Messagebox", "alert('ไม่อนุมัติโครงงาน');", true);

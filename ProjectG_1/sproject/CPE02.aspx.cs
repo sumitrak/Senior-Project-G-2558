@@ -13,13 +13,24 @@ namespace sproject
     public partial class CPE02 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
-            
+        {   
             Label1.Text = Session["loginName"].ToString();
+            string Status02 = Session["SCPE02"].ToString();
             if(!IsPostBack)
             {
                 autoFill();
+                if (Status02 == "approve")
+                {
+                    Button1.Enabled = false;
+                    Button2.Enabled = false;
+                }
+                else if (Status02 == "wait")
+                {
+                    Button1.Enabled = true;
+                    Button2.Enabled = true;
+                }
             }
+
         }
 
         private void autoFill()
@@ -101,6 +112,7 @@ namespace sproject
             SqlDataAdapter dtAd;
             DataTable dt = new DataTable();
             int rowCount;
+            string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
 
             dtAd = new SqlDataAdapter("SELECT * FROM CPE02 WHERE PID='" + Session["sesPID"] + "' ", con);
             dtAd.Fill(dt);
@@ -113,12 +125,12 @@ namespace sproject
             else if (rowCount > 0)
             {
                 con.Open();
-                SqlCommand com44 = new SqlCommand("UPDATE CPE02 SET PID= " + Session["sesPID"] + ", FormNo='2', status='wait', date='" + DateTime.Now + "'  WHERE PID = '" + Session["sesPID"] + "' ", con);
+                SqlCommand com44 = new SqlCommand("UPDATE CPE02 SET PID= " + Session["sesPID"] + ", FormNo='2', status='wait', date='" + date + "'  WHERE PID = '" + Session["sesPID"] + "' ", con);
                 com44.ExecuteNonQuery();
                 con.Close();
 
                 con.Open();
-                SqlCommand com4 = new SqlCommand(" INSERT INTO history VALUES(" + Session["sesPID"] + ", '" + PNameTH.Text + "', '2', '" + Session["loginSID"].ToString() + "', 'Edit', '" + DateTime.Now + "', 'wait' ) ", con);
+                SqlCommand com4 = new SqlCommand(" INSERT INTO history VALUES(" + Session["sesPID"] + ", '" + PNameTH.Text + "', '2', '" + Session["loginSID"].ToString() + "', 'Edit', '" + date + "', 'wait' ) ", con);
                 com4.ExecuteNonQuery();
                 con.Close();
                 Response.Redirect("HomeStudent.aspx");
@@ -132,18 +144,20 @@ namespace sproject
             string constr = WebConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString;
             SqlConnection con = new SqlConnection(constr);
 
+            string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
+
             con.Open();
-            SqlCommand com2 = new SqlCommand("INSERT INTO CPE02 VALUES('" + Session["sesPID"] + "', ' 2 ', 'wait', '" + DateTime.Now + "' )", con);
+            SqlCommand com2 = new SqlCommand("INSERT INTO CPE02 VALUES('" + Session["sesPID"] + "', ' 2 ', 'wait', '" + date + "' )", con);
             com2.ExecuteNonQuery();
             con.Close();
 
             con.Open();
-            SqlCommand com3 = new SqlCommand("INSERT INTO CPE02_data VALUES('" + Session["sesPID"] + "','"+DateTime.Now+"' , '" + TextBox1.Text + "', '" + TextBox2.Text + "', '" + TextBox3.Text + "' )", con);
+            SqlCommand com3 = new SqlCommand("INSERT INTO CPE02_data VALUES('" + Session["sesPID"] + "','"+date+"' , '" + TextBox1.Text + "', '" + TextBox2.Text + "', '" + TextBox3.Text + "' )", con);
             com3.ExecuteNonQuery();
             con.Close();
 
             con.Open();
-            SqlCommand com4 = new SqlCommand(" INSERT INTO history VALUES(" + Session["sesPID"] + ", '" + PNameTH.Text + "', '2', '"+Session["loginSID"].ToString()+"' , 'Create', '" + DateTime.Now + "', 'wait' ) ", con);
+            SqlCommand com4 = new SqlCommand(" INSERT INTO history VALUES(" + Session["sesPID"] + ", '" + PNameTH.Text + "', '2', '"+Session["loginSID"].ToString()+"' , 'Create', '" + date + "', 'wait' ) ", con);
             com4.ExecuteNonQuery();
             con.Close();
 
@@ -155,18 +169,20 @@ namespace sproject
             string constr = WebConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString;
             SqlConnection con = new SqlConnection(constr);
 
+            string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
+
             con.Open();
-            SqlCommand com3 = new SqlCommand("INSERT INTO CPE02_data VALUES('" + Session["sesPID"] + "','" + DateTime.Now + "' , '" + TextBox1.Text + "', '" + TextBox2.Text + "', '" + TextBox3.Text + "' )", con);
+            SqlCommand com3 = new SqlCommand("INSERT INTO CPE02_data VALUES('" + Session["sesPID"] + "','" + date + "' , '" + TextBox1.Text + "', '" + TextBox2.Text + "', '" + TextBox3.Text + "' )", con);
             com3.ExecuteNonQuery();
             con.Close();
 
             con.Open();
-            SqlCommand com44 = new SqlCommand("UPDATE CPE02 SET PID= " + Session["sesPID"] + ", FormNo='2', status='wait', date='" + DateTime.Now + "'  WHERE PID = '" + Session["sesPID"] + "' ", con);
+            SqlCommand com44 = new SqlCommand("UPDATE CPE02 SET PID= " + Session["sesPID"] + ", FormNo='2', status='wait', date='" + date + "'  WHERE PID = '" + Session["sesPID"] + "' ", con);
             com44.ExecuteNonQuery();
             con.Close();
 
             con.Open();
-            SqlCommand com4 = new SqlCommand(" INSERT INTO history VALUES(" + Session["sesPID"] + ", '" + PNameTH.Text + "', '2', '" + Session["loginSID"].ToString() + "', 'Edit', '" + DateTime.Now + "', 'wait' ) ", con);
+            SqlCommand com4 = new SqlCommand(" INSERT INTO history VALUES(" + Session["sesPID"] + ", '" + PNameTH.Text + "', '2', '" + Session["loginSID"].ToString() + "', 'Edit', '" + date + "', 'wait' ) ", con);
             com4.ExecuteNonQuery();
             con.Close();
 

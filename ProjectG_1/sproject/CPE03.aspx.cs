@@ -209,10 +209,12 @@ namespace sproject
             SqlConnection con = new SqlConnection(constr);
             con.Open();
 
-            SqlCommand com2 = new SqlCommand("UPDATE CPE03 SET PID= " + Session["sesPID"] + ", FormNo='3', status='wait', date='" + DateTime.Now + "', scope='"+TextBox1.Text+"'  WHERE PID = '" + Session["sesPID"] + "'  ", con);
+            string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
+
+            SqlCommand com2 = new SqlCommand("UPDATE CPE03 SET PID= " + Session["sesPID"] + ", FormNo='3', status='wait', date='" + date + "', scope='"+TextBox1.Text+"'  WHERE PID = '" + Session["sesPID"] + "'  ", con);
             com2.ExecuteNonQuery();
 
-            SqlCommand com33 = new SqlCommand("INSERT INTO history VALUES(" + Session["sesPID"] + ", '" + PNameTH.Text + "', '3', '" + Session["loginSID"].ToString() + "', 'Edit', '" + DateTime.Now + "', 'wait'  )", con);
+            SqlCommand com33 = new SqlCommand("INSERT INTO history VALUES(" + Session["sesPID"] + ", '" + PNameTH.Text + "', '3', '" + Session["loginSID"].ToString() + "', 'Edit', '" + date + "', 'wait'  )", con);
             com33.ExecuteNonQuery();
 
             con.Close();
@@ -224,10 +226,12 @@ namespace sproject
             SqlConnection con = new SqlConnection(constr);
             con.Open();
 
-            SqlCommand com2 = new SqlCommand("INSERT INTO CPE03 VALUES(" + Session["sesPID"] + ", ' 3 ', 'wait', '" + DateTime.Now + "', '" + TextBox1.Text + "', '0', '0', '0' )", con);
+            string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
+
+            SqlCommand com2 = new SqlCommand("INSERT INTO CPE03 VALUES(" + Session["sesPID"] + ", ' 3 ', 'wait', '" + date + "', '" + TextBox1.Text + "', '0', '0', '0' )", con);
             com2.ExecuteNonQuery();
 
-            SqlCommand com33 = new SqlCommand("INSERT INTO history VALUES(" + Session["sesPID"] + ", '" + PNameTH.Text + "', '3', '" + Session["loginSID"].ToString() + "', 'Create', '" + DateTime.Now + "', 'wait'  )", con);
+            SqlCommand com33 = new SqlCommand("INSERT INTO history VALUES(" + Session["sesPID"] + ", '" + PNameTH.Text + "', '3', '" + Session["loginSID"].ToString() + "', 'Create', '" + date + "', 'wait'  )", con);
             com33.ExecuteNonQuery();
 
             con.Close();

@@ -16,11 +16,10 @@ namespace sproject
         {
             string constr = WebConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString;
             SqlConnection con = new SqlConnection(constr);
-            
 
             Label1.Text = Session["loginName"].ToString();
-            if(!IsPostBack)
-            {
+            if (!IsPostBack)
+            {      
                 fillTable();
             }
         }

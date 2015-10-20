@@ -20,20 +20,7 @@ namespace sproject
             //ScriptManager.RegisterStartupScript(this, this.GetType(), "Messagebox", "alert('" + Session["tStatus"].ToString() + "');", true); 
             if(!IsPostBack)
             {
-                string constr = WebConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString;
-                SqlConnection con = new SqlConnection(constr);
-
-                con.Open();
-
-                SqlCommand cmd = new SqlCommand("SELECT PID, PNameTH, PNameENG FROM project WHERE (advisorID = '" + Session["loginSID"].ToString() + "') ", con);
-                DataTable dt = new DataTable();
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
-                GridView1.DataSource = dt;
-                GridView1.DataBind();
-
-                con.Close();
-
+                bindGridView();
                 if (ID == "teacher1")
                 {
                     DropDownList1.Items.Insert(3, new ListItem("ผู้ดูแลระบบ", "3"));
@@ -56,11 +43,24 @@ namespace sproject
             Response.Redirect("Request.aspx");
         }
 
-        
+        private void bindGridView()
+        {
+            string constr = WebConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString;
+            SqlConnection con = new SqlConnection(constr);
 
-        
+            con.Open();
 
-        protected void GridView1_SelectedIndexChanged1(object sender, EventArgs e)
+            SqlCommand cmd = new SqlCommand("SELECT PID, PNameTH, PNameENG FROM project WHERE (advisorID = '" + Session["loginSID"].ToString() + "') ", con);
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+
+            con.Close();
+        }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
             string constr = WebConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString;
             SqlConnection con = new SqlConnection(constr);
@@ -140,6 +140,12 @@ namespace sproject
 
                 con.Close();
             }
+        }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            bindGridView();
         }
     }
 }

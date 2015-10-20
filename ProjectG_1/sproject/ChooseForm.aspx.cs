@@ -50,10 +50,10 @@ namespace sproject
             SqlCommand com2 = new SqlCommand(" SELECT status FROM CPE02 WHERE PID='" + Session["sesPID"] + "' ", con);
             SqlDataReader reader3 = com2.ExecuteReader();
             while (reader3.Read())
-            {
-                
+            {      
                 status2 = reader3["status"].ToString();          
             }
+            Session["SCPE02"] = status2;
             con.Close();
 
             if (status2 == "approve")
@@ -77,6 +77,7 @@ namespace sproject
             {
                 status3 = reader4["status"].ToString();
             }
+            Session["SCPE03"] = status3;
             con.Close();
             if (status3 == "approve")
             {
@@ -87,7 +88,26 @@ namespace sproject
                 CPE03Btn.BackColor = System.Drawing.Color.LightYellow;
             }
 
-            //ทำต่อด้วยยยยยย
+            //CPE04
+
+            string status4 = "";
+            con.Open();
+            SqlCommand com4 = new SqlCommand(" SELECT status FROM CPE04 WHERE PID='" + Session["sesPID"] + "' ", con);
+            SqlDataReader reader5 = com4.ExecuteReader();
+            while (reader5.Read())
+            {
+                status4 = reader5["status"].ToString();
+            }
+            Session["SCPE04"] = status4;
+            con.Close();
+            if (status4 == "approve")
+            {
+                CPE04Btn.BackColor = System.Drawing.Color.LightGreen;
+            }
+            else if (status4 == "wait")
+            {
+                CPE04Btn.BackColor = System.Drawing.Color.LightYellow;
+            }
 
         }
 

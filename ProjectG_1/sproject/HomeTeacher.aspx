@@ -128,7 +128,7 @@
                     <td class="auto-style1">
                         </td>
                     <td class="auto-style3">
-                        <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" Width="150px" >
+                        <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" Width="150px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" >
                             <asp:ListItem Value="0">อาจารย์ที่ปรึกษา</asp:ListItem>
                             <asp:ListItem Value="1">อาจารย์ที่ปรึกษาร่วม</asp:ListItem>
                             <asp:ListItem Value="2">กรรมการ</asp:ListItem>
@@ -145,11 +145,14 @@
                 <tr>
                     <td>&nbsp;</td>
                     <td class="auto-style2">
-                        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" Width="560px" CellPadding="4" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="GridView1_SelectedIndexChanged1">
+                        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" Width="560px" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" OnPageIndexChanging="GridView1_PageIndexChanging">
                             <AlternatingRowStyle BackColor="White" />
                             <Columns>
                             <asp:HyperLinkField DataNavigateUrlFields="PID" DataNavigateUrlFormatString="detailProject.aspx?PID={0}" Text="รายละเอียด" />
                             <asp:HyperLinkField DataNavigateUrlFields="PID" DataNavigateUrlFormatString="tSeeHistory.aspx?PID={0}" Text="ประวัติ" />
+                                <asp:BoundField DataField="PID" HeaderText="รหัสโครงงาน" ReadOnly="True" SortExpression="PID" />
+                                <asp:BoundField DataField="PNameTH" HeaderText="ชื่อโครงงานTH" ReadOnly="True" SortExpression="PNameTH" />
+                                <asp:BoundField DataField="PNameENG" HeaderText="ชื่อโครงงานEN" ReadOnly="True" SortExpression="PNameENG" />
                             </Columns>
                             <EditRowStyle BackColor="#2461BF" />
                             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
