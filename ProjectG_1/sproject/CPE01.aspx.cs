@@ -21,11 +21,20 @@ namespace sproject
             SqlConnection con = new SqlConnection(constr);
 
             Label1.Text = Session["loginName"].ToString();
+            string Status01 = Session["SCPE01"].ToString();
 
             //ScriptManager.RegisterStartupScript(this, this.GetType(), "Messagebox", "alert('" + Session["loginSID"].ToString() + "');", true);
             if (!IsPostBack)
             {
                 FillDropDownList();
+                if (Status01 == "approve")
+                {
+                    Button1.Enabled = false;
+                }
+                else if (Status01 == "wait")
+                {
+                    Button1.Enabled = true;
+                }
             }
             /*            
             con.Open();
@@ -516,8 +525,7 @@ namespace sproject
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ChooseForm.aspx");
-            
+            Response.Redirect("ChooseForm.aspx"); 
         }
 
         protected void Button3_Click(object sender, EventArgs e)

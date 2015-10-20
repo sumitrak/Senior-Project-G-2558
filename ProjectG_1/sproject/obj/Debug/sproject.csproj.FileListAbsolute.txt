@@ -23,3 +23,9 @@ D:\Senior-Project-G-2558\ProjectG_1\sproject\bin\sproject.pdb
 D:\Senior-Project-G-2558\ProjectG_1\sproject\obj\Debug\sproject.csprojResolveAssemblyReference.cache
 D:\Senior-Project-G-2558\ProjectG_1\sproject\obj\Debug\sproject.dll
 D:\Senior-Project-G-2558\ProjectG_1\sproject\obj\Debug\sproject.pdb
+E:\University\ปี4\ss1\Software EN\Project\Senior-Project-G-2558\ProjectG_1\sproject\bin\sproject.dll.config
+E:\University\ปี4\ss1\Software EN\Project\Senior-Project-G-2558\ProjectG_1\sproject\bin\sproject.dll
+E:\University\ปี4\ss1\Software EN\Project\Senior-Project-G-2558\ProjectG_1\sproject\bin\sproject.pdb
+E:\University\ปี4\ss1\Software EN\Project\Senior-Project-G-2558\ProjectG_1\sproject\obj\Debug\sproject.csprojResolveAssemblyReference.cache
+E:\University\ปี4\ss1\Software EN\Project\Senior-Project-G-2558\ProjectG_1\sproject\obj\Debug\sproject.dll
+E:\University\ปี4\ss1\Software EN\Project\Senior-Project-G-2558\ProjectG_1\sproject\obj\Debug\sproject.pdb

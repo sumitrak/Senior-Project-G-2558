@@ -32,6 +32,7 @@ namespace sproject
             {
                 status = reader2["status"].ToString();
             }
+            Session["SCPE01"] = status;
             con.Close();
             if(status=="approve")
             {
