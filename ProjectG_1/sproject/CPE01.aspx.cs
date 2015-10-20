@@ -667,30 +667,34 @@ namespace sproject
             Regex rx2 = new Regex("^[0-9]+$");
             Regex rx3 = new Regex("^[a-zA-Z]+$");
 
-            if (rx1.IsMatch(PNameTH.Text) && rx3.IsMatch(PNameENG.Text))
+            if (PNameTH.Text != "" && PNameENG.Text != "")
             {
-                error3.Text = "";
-                if (rx2.IsMatch(SID2.Text) || SID2.Text == "")
+                if (rx1.IsMatch(PNameTH.Text) && rx3.IsMatch(PNameENG.Text))
                 {
-                    error1.Text = "";
-                    if (rx2.IsMatch(SID3.Text) || SID3.Text == "")
+                    error3.Text = "";
+                    if (rx2.IsMatch(SID2.Text) || SID2.Text == "")
                     {
                         error1.Text = "";
+                        if (rx2.IsMatch(SID3.Text) || SID3.Text == "")
+                        {
+                            error1.Text = "";
+                        }
+                        else
+                        {
+                            error1.Text = "กรุณากรอกรหัสนิสิตให้ถูกต้อง";
+                        }
                     }
                     else
                     {
                         error1.Text = "กรุณากรอกรหัสนิสิตให้ถูกต้อง";
                     }
-                }
-                else
-                {
-                    error1.Text = "กรุณากรอกรหัสนิสิตให้ถูกต้อง";
-                }
 
-            }
+                }
+                else { error3.Text = "กรุณาใส่ชื่อโครงงานให้ถูกต้อง"; }
+            }      
             else
             {
-                error3.Text = "กรุณาใส่ชื่อโครงงานให้ถูกต้อง";
+                error3.Text = "กรุณาใส่ชื่อโครงงาน";
             }
         }
                 

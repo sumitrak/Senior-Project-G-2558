@@ -13,11 +13,13 @@ namespace sproject
 {
     public partial class CPE03_teacher : System.Web.UI.Page
     {
+        public string whatCommit = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             Label1.Text = Session["loginName"].ToString();
             if (!IsPostBack)
             {
+                WhatDrop();
                 FillDropDownList();
                 FillData();
                 isApprove();
@@ -243,12 +245,13 @@ namespace sproject
             string constr = WebConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString;
             SqlConnection con = new SqlConnection(constr);
 
-            con.Open();
+            string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
 
+            con.Open();
             SqlCommand com = new SqlCommand("UPDATE CPE03 SET c1='0', c2='0', c3='0', status='reject' WHERE PID = '" + Session["whatPID"].ToString() + "' ", con);
             com.ExecuteNonQuery();
 
-            SqlCommand com1 = new SqlCommand("INSERT INTO history VALUES(" + Session["whatPID"].ToString() + ", '" + PNameTH.Text + "', '3', '" + Session["loginSID"].ToString() + "', 'Reject', '" + DateTime.Now + "', 'reject'  )", con);
+            SqlCommand com1 = new SqlCommand("INSERT INTO history VALUES(" + Session["whatPID"].ToString() + ", '" + PNameTH.Text + "', '3', '" + Session["loginSID"].ToString() + "', 'Reject', '" + date + "', 'reject'  )", con);
             com1.ExecuteNonQuery();
 
             con.Close();
@@ -275,7 +278,7 @@ namespace sproject
                 }
                 else { error2.Text = "กรุณาเลือกคณะกรรมการให้ครบทั้ง 3 ท่าน"; }
             }
-            else
+            else if(checkStatus == "2")
             {
                 if (DropDownList1.SelectedIndex != 0 && DropDownList2.SelectedIndex != 0 && DropDownList3.SelectedIndex != 0)
                 {
@@ -287,6 +290,37 @@ namespace sproject
             }
         }
 
+        private void WhatDrop()
+        {
+            string s1 = "", s2 = "", s3 = "";
+            string constr = WebConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString;
+            SqlConnection con = new SqlConnection(constr);
+            con.Open();
+
+            SqlCommand cmd3 = new SqlCommand("SELECT * FROM project WHERE PID=" + Session["whatPID"].ToString() + " ", con);
+            SqlDataReader reader3 = cmd3.ExecuteReader();
+            while (reader3.Read())
+            {
+                s1 = reader3["committee1ID"].ToString();
+                s2 = reader3["committee2ID"].ToString();
+                s3 = reader3["committee3ID"].ToString();
+            }
+            con.Close();
+            string ID = Session["loginSID"].ToString();
+            if (ID == s1)
+            {
+                whatCommit = "1";
+            }
+            else if (ID == s2)
+            {
+                whatCommit = "2";
+            }
+            else if (ID == s3)
+            {
+                whatCommit = "3";
+            }
+        }
+
         private void teacherCMD()
         {
             string constr = WebConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString;
@@ -294,6 +328,7 @@ namespace sproject
 
             string whatCommit = Session["whatCommittee"].ToString();
             SID3.Text = whatCommit;
+            string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
 
             if (whatCommit == "1")
             {
@@ -302,7 +337,7 @@ namespace sproject
                 SqlCommand com = new SqlCommand("UPDATE CPE03 SET c1='1' WHERE PID = '" + Session["whatPID"].ToString() + "' ", con);
                 com.ExecuteNonQuery();
 
-                SqlCommand com1 = new SqlCommand("INSERT INTO history VALUES(" + Session["whatPID"].ToString() + ", '" + PNameTH.Text + "', '3', '" + Session["loginSID"].ToString() + "', 'Approve', '" + DateTime.Now + "', 'wait'  )", con);
+                SqlCommand com1 = new SqlCommand("INSERT INTO history VALUES(" + Session["whatPID"].ToString() + ", '" + PNameTH.Text + "', '3', '" + Session["loginSID"].ToString() + "', 'Approve', '" + date + "', 'wait'  )", con);
                 com1.ExecuteNonQuery();
 
                 con.Close();
@@ -314,7 +349,7 @@ namespace sproject
                 SqlCommand com = new SqlCommand("UPDATE CPE03 SET c2='1' WHERE PID = '" + Session["whatPID"].ToString() + "' ", con);
                 com.ExecuteNonQuery();
 
-                SqlCommand com1 = new SqlCommand("INSERT INTO history VALUES(" + Session["whatPID"].ToString() + ", '" + PNameTH.Text + "', '3', '" + Session["loginSID"].ToString() + "', 'Approve', '" + DateTime.Now + "', 'wait'  )", con);
+                SqlCommand com1 = new SqlCommand("INSERT INTO history VALUES(" + Session["whatPID"].ToString() + ", '" + PNameTH.Text + "', '3', '" + Session["loginSID"].ToString() + "', 'Approve', '" + date + "', 'wait'  )", con);
                 com1.ExecuteNonQuery();
 
                 con.Close();
@@ -326,7 +361,7 @@ namespace sproject
                 SqlCommand com = new SqlCommand("UPDATE CPE03 SET c3='1' WHERE PID = '" + Session["whatPID"].ToString() + "' ", con);
                 com.ExecuteNonQuery();
 
-                SqlCommand com1 = new SqlCommand("INSERT INTO history VALUES(" + Session["whatPID"].ToString() + ", '" + PNameTH.Text + "', '3', '" + Session["loginSID"].ToString() + "', 'Approve', '" + DateTime.Now + "', 'wait'  )", con);
+                SqlCommand com1 = new SqlCommand("INSERT INTO history VALUES(" + Session["whatPID"].ToString() + ", '" + PNameTH.Text + "', '3', '" + Session["loginSID"].ToString() + "', 'Approve', '" + date + "', 'wait'  )", con);
                 com1.ExecuteNonQuery();
 
                 con.Close();
@@ -356,7 +391,7 @@ namespace sproject
                 SqlCommand com = new SqlCommand("UPDATE CPE03 SET status='approve' WHERE PID = '" + Session["whatPID"].ToString() + "' ", con);
                 com.ExecuteNonQuery();
 
-                SqlCommand com1 = new SqlCommand("INSERT INTO history VALUES(" + Session["whatPID"].ToString() + ", '" + PNameTH.Text + "', '3', 'Auto Gen', 'Approve', '" + DateTime.Now + "', 'approve'  )", con);
+                SqlCommand com1 = new SqlCommand("INSERT INTO history VALUES(" + Session["whatPID"].ToString() + ", '" + PNameTH.Text + "', '3', 'Auto Gen', 'Approve', '" + date + "', 'approve'  )", con);
                 com1.ExecuteNonQuery();
 
                 con.Close();
@@ -370,13 +405,15 @@ namespace sproject
             SqlConnection con = new SqlConnection(constr);
             con.Open();
 
+            string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
+
             SqlCommand com34 = new SqlCommand("UPDATE project SET committee1ID='" + DropDownList1.SelectedValue.ToString() + "', committee2ID='" + DropDownList2.SelectedValue.ToString() + "', committee3ID='" + DropDownList3.SelectedValue.ToString() + "' WHERE PID = '" + Session["whatPID"] + "' ", con);
             com34.ExecuteNonQuery();
 
             SqlCommand com = new SqlCommand("UPDATE CPE03 SET status= 'wait' WHERE PID = '" + Session["whatPID"].ToString() + "' ", con);
             com.ExecuteNonQuery();
 
-            SqlCommand com1 = new SqlCommand("INSERT INTO history VALUES(" + Session["whatPID"].ToString() + ", '" + PNameTH.Text + "', '3', '" + Session["loginSID"].ToString() + "', 'Add committee', '" + DateTime.Now + "', 'wait'  )", con);
+            SqlCommand com1 = new SqlCommand("INSERT INTO history VALUES(" + Session["whatPID"].ToString() + ", '" + PNameTH.Text + "', '3', '" + Session["loginSID"].ToString() + "', 'Add committee', '" + date + "', 'wait'  )", con);
             com1.ExecuteNonQuery();
 
             con.Close();

@@ -76,6 +76,7 @@
     <Content Include="CPE03.aspx" />
     <Content Include="CPE03_teacher.aspx" />
     <Content Include="CPE04.aspx" />
+    <Content Include="CPE04_teacher.aspx" />
     <Content Include="CPE05.aspx" />
     <Content Include="CPE06.aspx" />
     <Content Include="CPE07.aspx" />
@@ -194,6 +195,13 @@
     </Compile>
     <Compile Include="CPE04.aspx.designer.cs">
       <DependentUpon>CPE04.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CPE04_teacher.aspx.cs">
+      <DependentUpon>CPE04_teacher.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CPE04_teacher.aspx.designer.cs">
+      <DependentUpon>CPE04_teacher.aspx</DependentUpon>
     </Compile>
     <Compile Include="CPE05.aspx.cs">
       <DependentUpon>CPE05.aspx</DependentUpon>

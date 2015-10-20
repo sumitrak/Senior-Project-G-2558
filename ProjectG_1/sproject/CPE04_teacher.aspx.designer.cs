@@ -10,7 +10,7 @@
 namespace sproject {
     
     
-    public partial class CPE04 {
+    public partial class CPE04_teacher {
         
         /// <summary>
         /// form1 control.
@@ -544,13 +544,13 @@ namespace sproject {
         protected global::System.Web.UI.WebControls.CheckBox CheckBox9;
         
         /// <summary>
-        /// Button1 control.
+        /// Button3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button Button3;
         
         /// <summary>
         /// Button2 control.

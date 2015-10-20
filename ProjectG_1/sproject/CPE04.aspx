@@ -164,6 +164,31 @@
 
 
         
+        .auto-style22 {
+            width: 528px;
+            text-align: left;
+            height: 26px;
+        }
+        .auto-style23 {
+            text-align: center;
+            width: 117px;
+            height: 26px;
+        }
+        .auto-style24 {
+            text-align: center;
+            height: 26px;
+        }
+        .auto-style25 {
+            width: 10%;
+            height: 36px;
+        }
+        .auto-style26 {
+            width: 80%;
+            height: 36px;
+        }
+
+
+        
         </style>
 </head>
 <body style="height: 1396px">
@@ -429,9 +454,11 @@
                 <td class="auto-style3">&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style1">&nbsp;</td>
-                <td class="auto-style2">&nbsp;</td>
-                <td class="auto-style3">&nbsp;</td>
+                <td class="auto-style25"></td>
+                <td class="auto-style26">
+                    <asp:Label ID="error1" runat="server" ForeColor="Red"></asp:Label>
+                </td>
+                <td class="auto-style25">&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style1">&nbsp;</td>
@@ -455,55 +482,69 @@
                             <td class="auto-style12">ไม่เหมาะสม</td>
                         </tr>
                         <tr>
-                            <td class="auto-style14">1.&nbsp; จำนวนนิสิตที่ทำโครงงาน</td>
-                            <td class="auto-style13">
-                                <input id="Radio1" type="radio" /></td>
-                            <td class="auto-style12">
-                                <input id="Radio7" type="radio" /></td>
+                            <td class="auto-style22">1.&nbsp; จำนวนนิสิตที่ทำโครงงาน</td>
+                            <td class="auto-style23">
+                                <asp:RadioButton ID="RadioButton1" runat="server" Enabled="False" Text=" " />
+                            </td>
+                            <td class="auto-style24">
+                                <asp:RadioButton ID="RadioButton2" runat="server" Enabled="False" Text=" " />
+                            </td>
                         </tr>
                         <tr>
                             <td class="auto-style14">2.&nbsp; ที่มาและความสำคัญของปัญหา</td>
                             <td class="auto-style13">
-                                <input id="Radio2" type="radio" /></td>
+                                <asp:RadioButton ID="RadioButton3" runat="server" Enabled="False" Text=" " />
+                            </td>
                             <td class="auto-style12">
-                                <input id="Radio8" type="radio" /></td>
+                                <asp:RadioButton ID="RadioButton4" runat="server" Enabled="False" Text=" " />
+                            </td>
                         </tr>
                         <tr>
                             <td class="auto-style15">3.&nbsp; วัตถุประสงค์ของโครงงาน</td>
                             <td class="auto-style16">
-                                <input id="Radio3" type="radio" /></td>
+                                <asp:RadioButton ID="RadioButton5" runat="server" Enabled="False" Text=" " />
+                            </td>
                             <td class="auto-style17">
-                                <input id="Radio9" type="radio" /></td>
+                                <asp:RadioButton ID="RadioButton6" runat="server" Enabled="False" Text=" " />
+                            </td>
                         </tr>
                         <tr>
                             <td class="auto-style14">4.&nbsp; การศึกษาเกี่ยวกับหลักการและทฤษฎีที่เกียวข้อง </td>
-                            <td class="auto-style13">&nbsp;<input id="Radio4" type="radio" /></td>
+                            <td class="auto-style13">
+                                <asp:RadioButton ID="RadioButton7" runat="server" Enabled="False" Text=" " />
+                            </td>
                             <td class="auto-style12">
-                                <input id="Radio10" type="radio" /></td>
+                                <asp:RadioButton ID="RadioButton8" runat="server" Enabled="False" Text=" " />
+                            </td>
                         </tr>
                         <tr>
                             <td class="auto-style14">5.&nbsp; ความเหมาะสมของวิธีการดำเนินงานที่นำเสนอ</td>
                             <td class="auto-style13">
-                                <input id="Radio5" type="radio" /></td>
+                                <asp:RadioButton ID="RadioButton9" runat="server" Enabled="False" Text=" " />
+                            </td>
                             <td class="auto-style12">
-                                <input id="Radio11" type="radio" /></td>
+                                <asp:RadioButton ID="RadioButton10" runat="server" Enabled="False" Text=" " />
+                            </td>
                         </tr>
                         <tr>
                             <td class="auto-style14">6.&nbsp; ขอบเขตการศึกษา</td>
                             <td class="auto-style13">
-                                <input id="Radio6" type="radio" /></td>
+                                <asp:RadioButton ID="RadioButton11" runat="server" Enabled="False" Text=" " />
+                            </td>
                             <td class="auto-style12">
-                                <input id="Radio12" type="radio" /></td>
+                                <asp:RadioButton ID="RadioButton12" runat="server" Enabled="False" Text=" " />
+                            </td>
                         </tr>
                     </table>
                 </td>
                 <td class="auto-style3">&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style1">&nbsp;</td>
-                <td class="auto-style2">
-                    &nbsp;</td>
-                <td class="auto-style3">&nbsp;</td>
+                <td class="auto-style6"></td>
+                <td class="auto-style7">
+                    <asp:Label ID="error2" runat="server" ForeColor="Red"></asp:Label>
+                </td>
+                <td class="auto-style6"></td>
             </tr>
             <tr>
                 <td class="auto-style1">&nbsp;</td>
@@ -520,7 +561,8 @@
             <tr>
                 <td class="auto-style6"></td>
                 <td class="auto-style7">
-                    &nbsp;</td>
+                    <asp:Label ID="error3" runat="server" ForeColor="Red"></asp:Label>
+                </td>
                 <td class="auto-style6"></td>
             </tr>
             <tr>
@@ -539,45 +581,45 @@
                         </tr>
                         <tr>
                             <td class="auto-style20">
-                                <asp:CheckBox ID="CheckBox1" runat="server" Text="ผ่าน" />
+                                <asp:CheckBox ID="CheckBox1" runat="server" Text="ผ่าน" Enabled="False" />
                             </td>
                             <td class="auto-style19">
-                                <asp:CheckBox ID="CheckBox2" runat="server" Text="สมควรแก้ใหม่" />
+                                <asp:CheckBox ID="CheckBox2" runat="server" Text="สมควรแก้ใหม่" Enabled="False" />
                             </td>
                             <td class="auto-style20">
-                                <asp:CheckBox ID="CheckBox5" runat="server" Text="ไม่ผ่าน" />
+                                <asp:CheckBox ID="CheckBox5" runat="server" Text="ไม่ผ่าน" Enabled="False" />
                             </td>
                             <td class="auto-style21">
-                                <asp:CheckBox ID="CheckBox6" runat="server" Text="ผ่าน" />
+                                <asp:CheckBox ID="CheckBox6" runat="server" Text="ผ่าน" Enabled="False" />
                             </td>
                             <td class="auto-style19">
-                                <asp:CheckBox ID="CheckBox7" runat="server" Text="สมควรแก้ใหม่" />
+                                <asp:CheckBox ID="CheckBox7" runat="server" Text="สมควรแก้ใหม่" Enabled="False" />
                             </td>
                             <td>
-                                <asp:CheckBox ID="CheckBox10" runat="server" Text="ไม่ผ่าน" />
+                                <asp:CheckBox ID="CheckBox10" runat="server" Text="ไม่ผ่าน" Enabled="False" />
                             </td>
                         </tr>
                         <tr>
                             <td class="auto-style20">&nbsp;</td>
                             <td class="auto-style19">
-                                <asp:CheckBox ID="CheckBox3" runat="server" Text="สอบใหม่" />
+                                <asp:CheckBox ID="CheckBox3" runat="server" Text="สอบใหม่" Enabled="False" />
                             </td>
                             <td class="auto-style20">&nbsp;</td>
                             <td class="auto-style21">&nbsp;</td>
                             <td class="auto-style19">
-                                <asp:CheckBox ID="CheckBox8" runat="server" Text="สมควรแก้ใหม่" />
+                                <asp:CheckBox ID="CheckBox8" runat="server" Text="สมควรแก้ใหม่" Enabled="False" />
                             </td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td class="auto-style20">&nbsp;</td>
                             <td class="auto-style19">
-                                <asp:CheckBox ID="CheckBox4" runat="server" Text="ไม่ต้องสอบใหม่" />
+                                <asp:CheckBox ID="CheckBox4" runat="server" Text="ไม่ต้องสอบใหม่" Enabled="False" />
                             </td>
                             <td class="auto-style20">&nbsp;</td>
                             <td class="auto-style21">&nbsp;</td>
                             <td class="auto-style19">
-                                <asp:CheckBox ID="CheckBox9" runat="server" Text="ไม่ต้องสอบใหม่" />
+                                <asp:CheckBox ID="CheckBox9" runat="server" Text="ไม่ต้องสอบใหม่" Enabled="False" />
                             </td>
                             <td>&nbsp;</td>
                         </tr>
@@ -599,7 +641,7 @@
                     <div style="height: 32px; text-align: center">
                         <div style="float:left; text-align:center; width: 239px;">
                            
-                            <asp:Button ID="Button1" runat="server" Text="ส่ง" Width="60px"  />
+                            <asp:Button ID="Button1" runat="server" Text="บันทึก" Width="60px" OnClick="Button1_Click"  />
                            
                         </div>
                         <div style="float:left; text-align:center; width: 132px; height: 21px;">
@@ -607,7 +649,7 @@
                         </div>
                         <div style="float:left; text-align:left; width: 132px;">
                            
-                            <asp:Button ID="Button2" runat="server" Text="ยกเลิก" Width="60px"  />
+                            <asp:Button ID="Button2" runat="server" Text="ส่ง" Width="60px" OnClick="Button2_Click"  />
                            
                         </div>&nbsp;</td>
                 <td class="auto-style3">&nbsp;</td>
@@ -627,15 +669,12 @@
     <div class="footer">
 
         <br />
-        Copyright © 2015 By Kitchen Line
-        <br />
-&nbsp;AND&nbsp; G , Naresuan University</div>
+        Copyright © 2015 By Kitchen Line and G, Naresuan University</div>
 
     </form>
 
 
-    <div style="text-align: right; height: 28px;">
-            Page 12</div>
+
     
 
     </body>

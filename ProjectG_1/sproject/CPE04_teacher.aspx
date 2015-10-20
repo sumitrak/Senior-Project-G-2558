@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CPE03.aspx.cs" Inherits="sproject.CPE03" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CPE04_teacher.aspx.cs" Inherits="sproject.CPE04_teacher" %>
 
 <!DOCTYPE html>
 
@@ -119,9 +119,79 @@
 
 
         
+        .auto-style10 {
+            width: 99%;
+            background-color: #CCCCFF;
+        }
+        .auto-style11 {
+            width: 528px;
+            text-align: center;
+        }
+        .auto-style12 {
+            text-align: center;
+        }
+        .auto-style13 {
+            text-align: center;
+            width: 117px;
+        }
+        .auto-style14 {
+            width: 528px;
+            text-align: left;
+        }
+        .auto-style15 {
+            width: 528px;
+            text-align: left;
+            height: 23px;
+        }
+        .auto-style16 {
+            text-align: center;
+            width: 117px;
+            height: 23px;
+        }
+        .auto-style17 {
+            text-align: center;
+            height: 23px;
+        }
+        .auto-style19 {
+            width: 131px;
+        }
+        .auto-style20 {
+            width: 130px;
+        }
+        .auto-style21 {
+            width: 128px;
+        }
+
+
+        
+        .auto-style22 {
+            width: 528px;
+            text-align: left;
+            height: 26px;
+        }
+        .auto-style23 {
+            text-align: center;
+            width: 117px;
+            height: 26px;
+        }
+        .auto-style24 {
+            text-align: center;
+            height: 26px;
+        }
+        .auto-style25 {
+            width: 10%;
+            height: 36px;
+        }
+        .auto-style26 {
+            width: 80%;
+            height: 36px;
+        }
+
+
+        
         </style>
 </head>
-<body style="height: 1296px">
+<body style="height: 1396px">
     <form id="form1" runat="server">
     <div>
     
@@ -151,13 +221,13 @@
             <div class="x" style="width: 85px; height: 25px;">
             </div>
             <asp:LinkButton CssClass="x" ID="LinkButton1" runat="server" ForeColor="White" Width="112px" OnClick="LinkButton1_Click" >หน้าแรก</asp:LinkButton>
-            <asp:LinkButton CssClass="x" ID="LinkButton2" runat="server" ForeColor="White" OnClick="LinkButton2_Click">แบบฟอร์ม</asp:LinkButton>
+            <asp:LinkButton CssClass="x" ID="LinkButton2" runat="server" ForeColor="White" OnClick="LinkButton2_Click">คำร้องขอ</asp:LinkButton>
            
 
             <div style="float:right; width:50%; height: 27px;">
                 <div style="float:right; height:25px; width:20px;"></div>
                 <div style="float:right; text-align:right; height: 23px;">
-                     <asp:LinkButton CssClass="x" ID="LinkButton3" runat="server" ForeColor="White" OnClick="LinkButton3_Click">ออกจากระบบ</asp:LinkButton>
+                     <asp:LinkButton CssClass="x" ID="LinkButton3" runat="server" ForeColor="White" OnClick="LinkButton3_Click1">ออกจากระบบ</asp:LinkButton>
                 </div>
 
 
@@ -176,7 +246,7 @@
 
         
 
-        <div style="height: 1083px">
+        <div style="height: 1216px">
     
         <table style="width:100%; height: 831px;">
             <tr>
@@ -195,7 +265,7 @@
                 <td class="auto-style1">&nbsp;</td>
                 <td class="auto-style2">
                     <div>
-                    <asp:Label ID="Label2" runat="server" Font-Size="X-Large" Text="CPE03 - แบบขอสอบข้อเสนอโครงงาน"></asp:Label>
+                    <asp:Label ID="Label2" runat="server" Font-Size="X-Large" Text="CPE04 - แบบประเมินข้อเสนอโครงงาน"></asp:Label>
                     </div>
                 </td>
                 <td class="auto-style3">&nbsp;</td>
@@ -384,14 +454,16 @@
                 <td class="auto-style3">&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style1">&nbsp;</td>
-                <td class="auto-style2">&nbsp;</td>
-                <td class="auto-style3">&nbsp;</td>
+                <td class="auto-style25"></td>
+                <td class="auto-style26">
+                    <asp:Label ID="error1" runat="server" ForeColor="Red"></asp:Label>
+                </td>
+                <td class="auto-style25">&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style1">&nbsp;</td>
                 <td class="auto-style2">
-                    <asp:Label ID="Label20" runat="server" Text="ประเด็นปัญหาและขอบเขตของโครงงานโดยย่อ"></asp:Label>
+                    <asp:Label ID="Label20" runat="server" Text="ผลการประเมิน"></asp:Label>
                 </td>
                 <td class="auto-style3">&nbsp;</td>
             </tr>
@@ -403,122 +475,189 @@
             <tr>
                 <td class="auto-style1">&nbsp;</td>
                 <td class="auto-style2">
-                    <asp:Label ID="error2" runat="server" ForeColor="Red"></asp:Label>
+                    <table class="auto-style10">
+                        <tr>
+                            <td class="auto-style11">หัวข้อการประเมิน</td>
+                            <td class="auto-style13">เหมาะสม</td>
+                            <td class="auto-style12">ไม่เหมาะสม</td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style22">1.&nbsp; จำนวนนิสิตที่ทำโครงงาน</td>
+                            <td class="auto-style23">
+                                <asp:RadioButton ID="RadioButton1" runat="server" Text=" " />
+                            </td>
+                            <td class="auto-style24">
+                                <asp:RadioButton ID="RadioButton2" runat="server" Text=" " />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style14">2.&nbsp; ที่มาและความสำคัญของปัญหา</td>
+                            <td class="auto-style13">
+                                <asp:RadioButton ID="RadioButton3" runat="server" Text=" " />
+                            </td>
+                            <td class="auto-style12">
+                                <asp:RadioButton ID="RadioButton4" runat="server" Text=" " />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style15">3.&nbsp; วัตถุประสงค์ของโครงงาน</td>
+                            <td class="auto-style16">
+                                <asp:RadioButton ID="RadioButton5" runat="server" Text=" " />
+                            </td>
+                            <td class="auto-style17">
+                                <asp:RadioButton ID="RadioButton6" runat="server" Text=" " />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style14">4.&nbsp; การศึกษาเกี่ยวกับหลักการและทฤษฎีที่เกียวข้อง </td>
+                            <td class="auto-style13">
+                                <asp:RadioButton ID="RadioButton7" runat="server" Text=" " />
+                            </td>
+                            <td class="auto-style12">
+                                <asp:RadioButton ID="RadioButton8" runat="server" Text=" " />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style14">5.&nbsp; ความเหมาะสมของวิธีการดำเนินงานที่นำเสนอ</td>
+                            <td class="auto-style13">
+                                <asp:RadioButton ID="RadioButton9" runat="server" Text=" " />
+                            </td>
+                            <td class="auto-style12">
+                                <asp:RadioButton ID="RadioButton10" runat="server" Text=" " />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style14">6.&nbsp; ขอบเขตการศึกษา</td>
+                            <td class="auto-style13">
+                                <asp:RadioButton ID="RadioButton11" runat="server" Text=" " />
+                            </td>
+                            <td class="auto-style12">
+                                <asp:RadioButton ID="RadioButton12" runat="server" Text=" " />
+                            </td>
+                        </tr>
+                    </table>
                 </td>
-                <td class="auto-style3">&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style1">&nbsp;</td>
-                <td class="auto-style2">
-                    <asp:TextBox ID="TextBox1" runat="server" TextMode="MultiLine" Height="117px" Width="615px"></asp:TextBox>
-                </td>
-                <td class="auto-style3">&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style1">&nbsp;</td>
-                <td class="auto-style2">&nbsp;</td>
-                <td class="auto-style3">&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style1">&nbsp;</td>
-                <td class="auto-style2">&nbsp;</td>
                 <td class="auto-style3">&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style6"></td>
                 <td class="auto-style7">
-                    <asp:Label ID="Label19" runat="server" Text="กรรมการสอบโครงงาน"></asp:Label>
+                    <asp:Label ID="error2" runat="server" ForeColor="Red"></asp:Label>
+                </td>
+                <td class="auto-style6"></td>
+            </tr>
+            <tr>
+                <td class="auto-style1">&nbsp;</td>
+                <td class="auto-style2">ข้อเสนอแนะ</td>
+                <td class="auto-style3">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style1">&nbsp;</td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="TextBox1" runat="server" Height="119px" Width="689px"></asp:TextBox>
+                </td>
+                <td class="auto-style3">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style6"></td>
+                <td class="auto-style7">
+                    <asp:Label ID="error3" runat="server" ForeColor="Red"></asp:Label>
                 </td>
                 <td class="auto-style6"></td>
             </tr>
             <tr>
                 <td class="auto-style1">&nbsp;</td>
                 <td class="auto-style2">
-                    &nbsp;</td>
+                    สรุป</td>
                 <td class="auto-style3">&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style1">&nbsp;</td>
                 <td class="auto-style2">
-                    &nbsp;</td>
+                    <table class="auto-style10">
+                        <tr>
+                            <td colspan="3" style="text-align: center">ความเห็นของอาจารย์ผู้ประเมิณ</td>
+                            <td colspan="3" style="text-align: center">มติกรรมการ</td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style20">
+                                <asp:CheckBox ID="CheckBox1" runat="server" Text="ผ่าน" />
+                            </td>
+                            <td class="auto-style19">
+                                <asp:CheckBox ID="CheckBox2" runat="server" Text="สมควรแก้ใหม่" />
+                            </td>
+                            <td class="auto-style20">
+                                <asp:CheckBox ID="CheckBox5" runat="server" Text="ไม่ผ่าน" />
+                            </td>
+                            <td class="auto-style21">
+                                <asp:CheckBox ID="CheckBox6" runat="server" Text="ผ่าน" />
+                            </td>
+                            <td class="auto-style19">
+                                <asp:CheckBox ID="CheckBox7" runat="server" Text="สมควรแก้ใหม่" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox10" runat="server" Text="ไม่ผ่าน" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style20">&nbsp;</td>
+                            <td class="auto-style19">
+                                <asp:CheckBox ID="CheckBox3" runat="server" Text="สอบใหม่" />
+                            </td>
+                            <td class="auto-style20">&nbsp;</td>
+                            <td class="auto-style21">&nbsp;</td>
+                            <td class="auto-style19">
+                                <asp:CheckBox ID="CheckBox8" runat="server" Text="สมควรแก้ใหม่" />
+                            </td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style20">&nbsp;</td>
+                            <td class="auto-style19">
+                                <asp:CheckBox ID="CheckBox4" runat="server" Text="ไม่ต้องสอบใหม่" />
+                            </td>
+                            <td class="auto-style20">&nbsp;</td>
+                            <td class="auto-style21">&nbsp;</td>
+                            <td class="auto-style19">
+                                <asp:CheckBox ID="CheckBox9" runat="server" Text="ไม่ต้องสอบใหม่" />
+                            </td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+                </td>
                 <td class="auto-style3">&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style1">&nbsp;</td>
                 <td class="auto-style2">
                     <div>
-                        <div class="c">
-                            
-                            <asp:DropDownList ID="DropDownList1" runat="server" Enabled="False">
-                                <asp:ListItem Value="0">เลือกกรรมการ</asp:ListItem>
-                            </asp:DropDownList>
-                            
-                        </div>
-                        
-                        <div class="c">
-                            
-                            <asp:DropDownList ID="DropDownList2" runat="server" Enabled="False">
-                                <asp:ListItem Value="0">เลือกกรรมการ</asp:ListItem>
-                            </asp:DropDownList>
-                            
-                        </div>
-                        <div class="c">
-                            
-                            <asp:DropDownList ID="DropDownList3" runat="server" Enabled="False">
-                                <asp:ListItem Value="0">เลือกกรรมการ</asp:ListItem>
-                            </asp:DropDownList>
-                            
-                        </div>
-                    &nbsp;</div> 
+                        </div> 
                     &nbsp;</td>
                 <td class="auto-style3">&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style1">&nbsp;</td>
                 <td class="auto-style2">
-                    &nbsp;</td>
+                    <div style="height: 32px; text-align: center">
+                        <div style="float:left; text-align:center; width: 239px;">
+                           
+                            <asp:Button ID="Button3" runat="server"  Text="บันทึก" OnClick="Button3_Click" />
+                           
+                        </div>
+                        <div style="float:left; text-align:center; width: 132px; height: 21px;">
+                            
+                        </div>
+                        <div style="float:left; text-align:left; width: 132px;">
+                           
+                            <asp:Button ID="Button2" runat="server" Text="ยกเลิก" Width="60px" OnClick="Button2_Click"  />
+                           
+                        </div>&nbsp;</td>
                 <td class="auto-style3">&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style8"></td>
                 <td class="auto-style9"></td>
                 <td class="auto-style8"></td>
-            </tr>
-            <tr>
-                <td class="auto-style1">&nbsp;</td>
-                <td class="auto-style2">&nbsp;</td>
-                <td class="auto-style3">&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style1">&nbsp;</td>
-                <td class="auto-style2">&nbsp;</td>
-                <td class="auto-style3">&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style1">&nbsp;</td>
-                <td class="auto-style2">
-                    <div>
-                        <div style="float:left; text-align:right; width: 239px;">
-                           
-                            <asp:Button ID="Button1" runat="server" Text="บันทึก" Width="60px" OnClick="Button1_Click" />
-                           
-                        </div>
-                        <div style="float:left; text-align:right; width: 132px; height: 21px;">
-                            
-                        </div>
-                        <div style="float:left; text-align:left; width: 132px;">
-                           
-                            <asp:Button ID="Button2" runat="server" Text="ส่ง" Width="60px" OnClick="Button2_Click" />
-                           
-                        </div>
-                    </div>
-                    &nbsp;</td>
-                <td class="auto-style3">&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style1">&nbsp;</td>
-                <td class="auto-style2">&nbsp;</td>
-                <td class="auto-style3">&nbsp;</td>
             </tr>
             </table>
     
@@ -530,15 +669,12 @@
     <div class="footer">
 
         <br />
-        Copyright © 2015 By Kitchen Line
-        <br />
-&nbsp;AND&nbsp; G , Naresuan University</div>
+        Copyright © 2015 By Kitchen Line and G, Naresuan University</div>
 
     </form>
 
 
-    <div style="text-align: right; height: 28px;">
-            Page 10</div>
+
     
 
     </body>

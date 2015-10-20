@@ -180,7 +180,7 @@ namespace sproject
         }
 
         protected void Button1_Click(object sender, EventArgs e)
-        {
+        {//บันทึก
             haveForm();
             if (haveForm3 == false)
             {
@@ -238,8 +238,43 @@ namespace sproject
         }
 
         protected void Button2_Click(object sender, EventArgs e)
-        {
+        {//ส่ง
+            string constr = WebConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString;
+            SqlConnection con = new SqlConnection(constr);
 
+            SqlDataAdapter dtAd;
+            DataTable dt = new DataTable();
+            int rowCount;
+            string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
+
+            dtAd = new SqlDataAdapter("SELECT * FROM CPE03 WHERE PID='" + Session["sesPID"] + "' ", con);
+            dtAd.Fill(dt);
+            rowCount = dt.Rows.Count;
+
+            if (rowCount == 0)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Messagebox", "alert('ไม่สามารถส่งแบบฟอร์มที่ว่างเปล่าได้');", true);
+            }
+            else if (rowCount > 0)
+            {
+                con.Open();
+                SqlCommand com44 = new SqlCommand("UPDATE CPE03 SET PID= " + Session["sesPID"] + ", FormNo='3', status='wait', date='" + date + "',scope='" + TextBox1.Text + "'  WHERE PID = '" + Session["sesPID"] + "' ", con);
+                com44.ExecuteNonQuery();
+                con.Close();
+
+                con.Open();
+                SqlCommand com4 = new SqlCommand(" INSERT INTO history VALUES(" + Session["sesPID"] + ", '" + PNameTH.Text + "', '3', '" + Session["loginSID"].ToString() + "', 'Edit', '" + date + "', 'wait' ) ", con);
+                com4.ExecuteNonQuery();
+                con.Close();
+
+                con.Open();
+                SqlCommand com3 = new SqlCommand(" INSERT INTO CPE04 VALUES(" + Session["sesPID"] + ",'4','wait','" + date + "','0','0','0') ", con);
+                com3.ExecuteNonQuery();
+                con.Close();
+                Response.Redirect("HomeStudent.aspx");
+            }
+
+            Response.Redirect("ChooseForm.aspx");
         }
     }
 }
