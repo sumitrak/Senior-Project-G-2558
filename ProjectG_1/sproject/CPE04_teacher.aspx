@@ -484,55 +484,55 @@
                         <tr>
                             <td class="auto-style22">1.&nbsp; จำนวนนิสิตที่ทำโครงงาน</td>
                             <td class="auto-style23">
-                                <asp:RadioButton ID="RadioButton1" runat="server" Text=" " />
+                                <asp:RadioButton ID="RadioButton1" runat="server" Text=" " GroupName="Group1"/>
                             </td>
                             <td class="auto-style24">
-                                <asp:RadioButton ID="RadioButton2" runat="server" Text=" " />
+                                <asp:RadioButton ID="RadioButton2" runat="server" Text=" " GroupName="Group1"/>
                             </td>
                         </tr>
                         <tr>
                             <td class="auto-style14">2.&nbsp; ที่มาและความสำคัญของปัญหา</td>
                             <td class="auto-style13">
-                                <asp:RadioButton ID="RadioButton3" runat="server" Text=" " />
+                                <asp:RadioButton ID="RadioButton3" runat="server" Text=" " GroupName="Group2"/>
                             </td>
                             <td class="auto-style12">
-                                <asp:RadioButton ID="RadioButton4" runat="server" Text=" " />
+                                <asp:RadioButton ID="RadioButton4" runat="server" Text=" " GroupName="Group2"/>
                             </td>
                         </tr>
                         <tr>
                             <td class="auto-style15">3.&nbsp; วัตถุประสงค์ของโครงงาน</td>
                             <td class="auto-style16">
-                                <asp:RadioButton ID="RadioButton5" runat="server" Text=" " />
+                                <asp:RadioButton ID="RadioButton5" runat="server" Text=" " GroupName="Group3"/>
                             </td>
                             <td class="auto-style17">
-                                <asp:RadioButton ID="RadioButton6" runat="server" Text=" " />
+                                <asp:RadioButton ID="RadioButton6" runat="server" Text=" " GroupName="Group3"/>
                             </td>
                         </tr>
                         <tr>
                             <td class="auto-style14">4.&nbsp; การศึกษาเกี่ยวกับหลักการและทฤษฎีที่เกียวข้อง </td>
                             <td class="auto-style13">
-                                <asp:RadioButton ID="RadioButton7" runat="server" Text=" " />
+                                <asp:RadioButton ID="RadioButton7" runat="server" Text=" " GroupName="Group4"/>
                             </td>
                             <td class="auto-style12">
-                                <asp:RadioButton ID="RadioButton8" runat="server" Text=" " />
+                                <asp:RadioButton ID="RadioButton8" runat="server" Text=" " GroupName="Group4"/>
                             </td>
                         </tr>
                         <tr>
                             <td class="auto-style14">5.&nbsp; ความเหมาะสมของวิธีการดำเนินงานที่นำเสนอ</td>
                             <td class="auto-style13">
-                                <asp:RadioButton ID="RadioButton9" runat="server" Text=" " />
+                                <asp:RadioButton ID="RadioButton9" runat="server" Text=" " GroupName="Group5"/>
                             </td>
                             <td class="auto-style12">
-                                <asp:RadioButton ID="RadioButton10" runat="server" Text=" " />
+                                <asp:RadioButton ID="RadioButton10" runat="server" Text=" " GroupName="Group5"/>
                             </td>
                         </tr>
                         <tr>
                             <td class="auto-style14">6.&nbsp; ขอบเขตการศึกษา</td>
                             <td class="auto-style13">
-                                <asp:RadioButton ID="RadioButton11" runat="server" Text=" " />
+                                <asp:RadioButton ID="RadioButton11" runat="server" Text=" " GroupName="Group6"/>
                             </td>
                             <td class="auto-style12">
-                                <asp:RadioButton ID="RadioButton12" runat="server" Text=" " />
+                                <asp:RadioButton ID="RadioButton12" runat="server" Text=" " GroupName="Group6"/>
                             </td>
                         </tr>
                     </table>

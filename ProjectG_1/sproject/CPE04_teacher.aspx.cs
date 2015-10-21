@@ -219,13 +219,18 @@ namespace sproject
             dtAd.Fill(dt);
             rowCount = dt.Rows.Count;
 
+            if (rowCount == 0)
+            {
                 SqlCommand com = new SqlCommand("INSERT INTO CPE04_data VALUES(" + Session["whatPID"] + ", '" + s1 + "', '" + s2 + "', '" + s3 + "', '" + s4 + "', '" + s5 + "', '" + s6 + "')", con);
                 com.ExecuteNonQuery(); 
-
+            }
+            else if (rowCount >0 )
+            {
                 SqlCommand com2 = new SqlCommand("UPDATE CPE04_data SET PID= " + Session["whatPID"] + ", NStudent='" + s1 + "', Provenance='" + s2 + "', Purpose='" + s3 + "', Theore='" + s4 + "',Convenience='" + s5 + "',scope='" + s6 + "' WHERE PID = '" + Session["whatPID"] + "'  ", con);
                 com2.ExecuteNonQuery();
-                con.Close();                                
-             
+                con.Close(); 
+            }
+   
         }
 
         private void AddCPE04()
