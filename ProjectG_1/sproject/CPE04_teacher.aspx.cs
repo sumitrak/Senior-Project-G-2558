@@ -409,14 +409,17 @@ namespace sproject
         protected void Button3_Click(object sender, EventArgs e)
         {
             string checkStatus = Session["tStatus"].ToString();
+            string script = "alert(\"Success!\");";
             if (checkStatus == "0")
             {
                 Addratio();
                 AddCPE04();
+                ScriptManager.RegisterStartupScript(this, GetType(),"ServerControlScript", script, true);
             }
             else if (checkStatus == "2")
             {
                 AddCPE04();
+                ScriptManager.RegisterStartupScript(this, GetType(),"ServerControlScript", script, true);
             }
           
         }
