@@ -554,7 +554,7 @@
             <tr>
                 <td class="auto-style1">&nbsp;</td>
                 <td class="auto-style2">
-                    <asp:TextBox ID="TextBox1" runat="server" Height="119px" Width="689px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox1" runat="server" Height="119px" Width="689px" Enabled="False"></asp:TextBox>
                 </td>
                 <td class="auto-style3">&nbsp;</td>
             </tr>

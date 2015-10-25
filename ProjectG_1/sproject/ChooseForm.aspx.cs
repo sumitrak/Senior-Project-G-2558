@@ -85,7 +85,7 @@ namespace sproject
             }
             else if (status3 == "wait")
             {
-                CPE03Btn.BackColor = System.Drawing.Color.LightYellow;
+                CPE03Btn.BackColor = System.Drawing.Color.Yellow;
             }
 
             //CPE04
@@ -106,7 +106,7 @@ namespace sproject
             }
             else if (status4 == "wait")
             {
-                CPE04Btn.BackColor = System.Drawing.Color.LightYellow;
+                CPE04Btn.BackColor = System.Drawing.Color.Yellow;
             }
 
         }

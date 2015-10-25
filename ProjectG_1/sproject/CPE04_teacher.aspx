@@ -581,45 +581,45 @@
                         </tr>
                         <tr>
                             <td class="auto-style20">
-                                <asp:CheckBox ID="CheckBox1" runat="server" Text="ผ่าน" />
+                                <asp:CheckBox ID="CheckBox1" runat="server" Text="ผ่าน" GroupName="Group1"/>
                             </td>
                             <td class="auto-style19">
-                                <asp:CheckBox ID="CheckBox2" runat="server" Text="สมควรแก้ใหม่" />
+                                <asp:CheckBox ID="CheckBox2" runat="server" Text="สมควรแก้ใหม่" GroupName="Group1"/>
                             </td>
                             <td class="auto-style20">
-                                <asp:CheckBox ID="CheckBox5" runat="server" Text="ไม่ผ่าน" />
+                                <asp:CheckBox ID="CheckBox5" runat="server" Text="ไม่ผ่าน" GroupName="Group1"/>
                             </td>
                             <td class="auto-style21">
-                                <asp:CheckBox ID="CheckBox6" runat="server" Text="ผ่าน" />
+                                <asp:CheckBox ID="CheckBox6" runat="server" Text="ผ่าน" GroupName="Group2"/>
                             </td>
                             <td class="auto-style19">
-                                <asp:CheckBox ID="CheckBox7" runat="server" Text="สมควรแก้ใหม่" />
+                                <asp:CheckBox ID="CheckBox7" runat="server" Text="สมควรแก้ใหม่" GroupName="Group2"/>
                             </td>
                             <td>
-                                <asp:CheckBox ID="CheckBox10" runat="server" Text="ไม่ผ่าน" />
+                                <asp:CheckBox ID="CheckBox10" runat="server" Text="ไม่ผ่าน" GroupName="Group2"/>
                             </td>
                         </tr>
                         <tr>
                             <td class="auto-style20">&nbsp;</td>
                             <td class="auto-style19">
-                                <asp:CheckBox ID="CheckBox3" runat="server" Text="สอบใหม่" />
+                                <asp:CheckBox ID="CheckBox3" runat="server" Text="สอบใหม่" GroupName="Group1"/>
                             </td>
                             <td class="auto-style20">&nbsp;</td>
                             <td class="auto-style21">&nbsp;</td>
                             <td class="auto-style19">
-                                <asp:CheckBox ID="CheckBox8" runat="server" Text="สมควรแก้ใหม่" />
+                                <asp:CheckBox ID="CheckBox8" runat="server" Text="สอบใหม่" GroupName="Group2"/>
                             </td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td class="auto-style20">&nbsp;</td>
                             <td class="auto-style19">
-                                <asp:CheckBox ID="CheckBox4" runat="server" Text="ไม่ต้องสอบใหม่" />
+                                <asp:CheckBox ID="CheckBox4" runat="server" Text="ไม่ต้องสอบใหม่" GroupName="Group1"/>
                             </td>
                             <td class="auto-style20">&nbsp;</td>
                             <td class="auto-style21">&nbsp;</td>
                             <td class="auto-style19">
-                                <asp:CheckBox ID="CheckBox9" runat="server" Text="ไม่ต้องสอบใหม่" />
+                                <asp:CheckBox ID="CheckBox9" runat="server" Text="ไม่ต้องสอบใหม่" GroupName="Group2"/>
                             </td>
                             <td>&nbsp;</td>
                         </tr>

@@ -17,13 +17,23 @@ namespace sproject
         protected void Page_Load(object sender, EventArgs e)
         {
             Label1.Text = Session["loginName"].ToString();
-
-            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Messagebox", "alert('" + Session["loginSID"].ToString() + "');", true);
+            string Status03 = Session["SCPE03"].ToString();
+            
             if (!IsPostBack)
             {
                 FillDropDownList();
                 FillData();
                 haveForm();
+                if (Status03 == "approve")
+                {
+                    Button1.Enabled = false;
+                    Button2.Enabled = false;
+                }
+                else if (Status03 == "wait")
+                {
+                    Button1.Enabled = true;
+                    Button2.Enabled = true;
+                }
             }
 
             if(haveForm3 == true)
@@ -42,8 +52,6 @@ namespace sproject
 
                 con.Close();            
             }
-
-           // ScriptManager.RegisterStartupScript(this, this.GetType(), "Messagebox", "alert('"+haveForm3.ToString()+"');", true);
         }
 
         private void FillDropDownList()
@@ -186,9 +194,9 @@ namespace sproject
             {
                 if (TextBox1.Text != "")
                 {
-                    createForm();                    
-                    Response.Redirect("HomeStudent.aspx");
-                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "Messagebox", "alert('ส่งแบบฟอร์มแล้ว');", true);
+                    createForm();
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"Success! ->Form3\");", true);
+                    //Response.Redirect("HomeStudent.aspx");
                 }
                 else
                 {
@@ -198,7 +206,8 @@ namespace sproject
             else if (haveForm3 == true)
             {
                 updateForm();
-                Response.Redirect("HomeStudent.aspx");
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"Success! ->Form3\");", true);
+                //Response.Redirect("HomeStudent.aspx");
             }
             
         }
@@ -267,14 +276,12 @@ namespace sproject
                 com4.ExecuteNonQuery();
                 con.Close();
 
-                con.Open();
-                SqlCommand com3 = new SqlCommand(" INSERT INTO CPE04 VALUES(" + Session["sesPID"] + ",'4','wait','" + date + "','0','0','0') ", con);
-                com3.ExecuteNonQuery();
-                con.Close();
-                Response.Redirect("HomeStudent.aspx");
+                //Response.Redirect("HomeStudent.aspx");
             }
-
+            //string script = "alert(\"Success! ->Form3\");";
+            //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"Success! ->Form3\");", true);
             Response.Redirect("ChooseForm.aspx");
+            
         }
     }
 }

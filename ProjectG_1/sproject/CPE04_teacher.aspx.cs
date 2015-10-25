@@ -409,7 +409,7 @@ namespace sproject
         protected void Button3_Click(object sender, EventArgs e)
         {
             string checkStatus = Session["tStatus"].ToString();
-            string script = "alert(\"Success!\");";
+            string script = "alert(\"Success! ->Form4\");";
             if (checkStatus == "0")
             {
                 Addratio();

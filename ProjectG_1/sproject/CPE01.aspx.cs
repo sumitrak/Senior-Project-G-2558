@@ -31,10 +31,12 @@ namespace sproject
                 if (Status01 == "approve")
                 {
                     Button1.Enabled = false;
+                    Button2.Enabled = false;
                 }
                 else if (Status01 == "wait")
                 {
                     Button1.Enabled = true;
+                    Button2.Enabled = true;
                 }
             }
             /*            
