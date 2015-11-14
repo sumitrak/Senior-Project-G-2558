@@ -127,6 +127,16 @@ namespace sproject
                     cmd8.ExecuteNonQuery();
                     con.Close();
 
+                    con.Open();
+                    SqlCommand cmd9 = new SqlCommand(" DELETE FROM CPE04 WHERE PID = '" + whatPID + "' ", con);
+                    cmd9.ExecuteNonQuery();
+                    con.Close();
+
+                    con.Open();
+                    SqlCommand cmd10 = new SqlCommand(" DELETE FROM CPE05 WHERE PID = '" + whatPID + "' ", con);
+                    cmd10.ExecuteNonQuery();
+                    con.Close();
+
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Messagebox", "alert('ออกจากกลุ่มแล้ว');", true);
                 }
                 else

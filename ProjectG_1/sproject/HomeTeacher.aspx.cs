@@ -93,28 +93,28 @@ namespace sproject
             }
             else if (value == "2")
             {
-                con.Open();
-                string logID = Session["loginSID"].ToString();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM project WHERE (committee1ID = '" + Session["loginSID"].ToString() + "') OR (committee2ID = '" + Session["loginSID"].ToString() + "') OR (committee3ID = '" + Session["loginSID"].ToString() + "') ", con);
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    if (logID == reader["committee1ID"].ToString())
-                    {
-                        Session["whatCommittee"] = "1";
-                    }
-                    else if (logID == reader["committee2ID"].ToString())
-                    {
-                        Session["whatCommittee"] = "2";
-                    }
-                    else if (logID == reader["committee3ID"].ToString())
-                    {
-                        Session["whatCommittee"] = "3";
-                    }
-                }
+                //con.Open();
+                //string logID = Session["loginSID"].ToString();
+                //SqlCommand cmd = new SqlCommand("SELECT * FROM project WHERE (committee1ID = '" + Session["loginSID"].ToString() + "') OR (committee2ID = '" + Session["loginSID"].ToString() + "') OR (committee3ID = '" + Session["loginSID"].ToString() + "') ", con);
+                //SqlDataReader reader = cmd.ExecuteReader();
+                //while (reader.Read())
+                //{
+                //    if (logID == reader["committee1ID"].ToString())
+                //    {
+                //        Session["whatCommittee"] = "1";
+                //    }
+                //    else if (logID == reader["committee2ID"].ToString())
+                //    {
+                //        Session["whatCommittee"] = "2";
+                //    }
+                //    else if (logID == reader["committee3ID"].ToString())
+                //    {
+                //        Session["whatCommittee"] = "3";
+                //    }
+                //}
+                //con.Close();
 
-                con.Close();
-
+                /////////////////////////////////////////////////////////////
                 con.Open();
                 SqlCommand cmd2 = new SqlCommand("SELECT PID, PNameTH, PNameENG FROM project WHERE (committee1ID = '" + Session["loginSID"].ToString() + "') OR (committee2ID = '" + Session["loginSID"].ToString() + "') OR (committee3ID = '" + Session["loginSID"].ToString() + "') ", con);
                 DataTable dt = new DataTable();

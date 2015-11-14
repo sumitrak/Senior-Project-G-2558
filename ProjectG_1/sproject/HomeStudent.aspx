@@ -197,7 +197,8 @@
                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Dbconnection %>" SelectCommand="SELECT project.PID, project.PNameTH, CPE01.FormNo, CPE01.status FROM CPE01 INNER JOIN project ON CPE01.PID = project.PID WHERE (project.PID = @PID) 
 UNION SELECT project_2.PID, project_2.PNameTH, CPE02.FormNo, CPE02.status FROM CPE02 INNER JOIN project AS project_2 ON CPE02.PID = project_2.PID WHERE (project_2.PID = @PID) 
 UNION SELECT project_1.PID, project_1.PNameTH, CPE03.formNo, CPE03.status FROM CPE03 INNER JOIN project AS project_1 ON CPE03.PID = project_1.PID WHERE (project_1.PID = @PID)
-UNION SELECT project_3.PID, project_3.PNameTH, CPE04.formNo, CPE04.status FROM CPE04 INNER JOIN project AS project_3 ON CPE04.PID = project_3.PID WHERE (project_3.PID = @PID)">
+UNION SELECT project_3.PID, project_3.PNameTH, CPE04.formNo, CPE04.status FROM CPE04 INNER JOIN project AS project_3 ON CPE04.PID = project_3.PID WHERE (project_3.PID = @PID)
+UNION SELECT project_4.PID, project_4.PNameTH, CPE05.formNo, CPE05.status FROM CPE05 INNER JOIN project AS project_4 ON CPE05.PID = project_4.PID WHERE (project_4.PID = @PID)">
                             <SelectParameters>
                                 <asp:SessionParameter Name="PID" SessionField="sesPID" />
                             </SelectParameters>

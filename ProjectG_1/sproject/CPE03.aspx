@@ -508,7 +508,7 @@
                         </div>
                         <div style="float:left; text-align:left; width: 132px;">
                            
-                            <asp:Button ID="Button2" runat="server" Text="ส่ง" Width="60px" OnClick="Button2_Click" />
+                            <asp:Button ID="Button2" runat="server" Text="ส่ง" Width="60px" OnClick="Button2_Click" Enabled="False" />
                            
                         </div>
                     </div>

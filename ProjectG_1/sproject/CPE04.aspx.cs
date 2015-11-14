@@ -14,10 +14,22 @@ namespace sproject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Label1.Text = Session["loginName"].ToString(); 
+            Label1.Text = Session["loginName"].ToString();
+            string Status04 = Session["SCPE04"].ToString();
             FillData();
             Fillradio();
             FillCPE04();
+
+            if (Status04 == "approve")
+            {
+                Button1.Enabled = false;
+                Button2.Enabled = false;
+            }
+            else if (Status04 == "wait")
+            {
+                Button1.Enabled = true;
+                Button2.Enabled = true;
+            }
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
@@ -209,12 +221,47 @@ namespace sproject
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            
+            Response.Redirect("ChooseForm.aspx");
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
+            string constr = WebConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString;
+            SqlConnection con = new SqlConnection(constr);
 
+            //string whatCommit = Session["whatCommittee"].ToString();
+            string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
+
+            con.Open();
+            bool isAllApprove = false;
+            SqlCommand cmddd = new SqlCommand("SELECT * FROM CPE04 WHERE  PID = '" + Session["sesPID"].ToString() + "' ", con);
+            SqlDataReader reader = cmddd.ExecuteReader();
+            while (reader.Read())
+            {
+                if (reader["StatusA"].ToString() == "ผ่าน" && reader["StatusC"].ToString() == "ผ่าน")
+                {
+                    isAllApprove = true;
+                }
+                else
+                {
+                    error3.Text = "ความเห็นอาจารย์ หรือมติกรรมต้องผ่านทั้ง2ท่าน";
+                }
+            }
+            con.Close();
+
+            if (isAllApprove == true)
+            {
+                con.Open();
+                SqlCommand com = new SqlCommand("UPDATE CPE04 SET status='approve' WHERE PID = '" + Session["sesPID"].ToString() + "' ", con);
+                com.ExecuteNonQuery();
+                con.Close();
+
+                con.Open();
+                SqlCommand com3 = new SqlCommand(" INSERT INTO CPE05 VALUES(" + Session["sesPID"] + ",'5','wait','" + date + "','','') ", con);
+                com3.ExecuteNonQuery();
+                con.Close();
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"Success! ->Form4\");", true);
+            }
         }
 
 

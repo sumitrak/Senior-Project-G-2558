@@ -641,7 +641,7 @@
                     <div style="height: 32px; text-align: center">
                         <div style="float:left; text-align:center; width: 239px;">
                            
-                            <asp:Button ID="Button1" runat="server" Text="บันทึก" Width="60px" OnClick="Button1_Click"  />
+                            <asp:Button ID="Button1" runat="server" Text="ยกเลิก" Width="60px" OnClick="Button1_Click" Enabled="False"  />
                            
                         </div>
                         <div style="float:left; text-align:center; width: 132px; height: 21px;">
@@ -649,7 +649,7 @@
                         </div>
                         <div style="float:left; text-align:left; width: 132px;">
                            
-                            <asp:Button ID="Button2" runat="server" Text="ส่ง" Width="60px" OnClick="Button2_Click"  />
+                            <asp:Button ID="Button2" runat="server" Text="ส่ง" Width="60px" OnClick="Button2_Click" Enabled="False"  />
                            
                         </div>&nbsp;</td>
                 <td class="auto-style3">&nbsp;</td>

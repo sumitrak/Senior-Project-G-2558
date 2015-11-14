@@ -17,10 +17,13 @@ namespace sproject
         protected void Page_Load(object sender, EventArgs e)
         {
             Label1.Text = Session["loginName"].ToString();
+
             if (!IsPostBack)
             {
                 WhatDrop();
+                Session["whatCommittee"] = whatCommit;
                 FillDropDownList();
+                FillCommittee();
                 FillData();
                 isApprove();
             }
@@ -197,6 +200,70 @@ namespace sproject
 
         }
 
+        private void FillCommittee()
+        {
+            string constr = WebConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString;
+            SqlConnection con = new SqlConnection(constr);
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM CPE03 WHERE  PID = '" + Session["whatPID"].ToString() + "' ", con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                /***** Commit1 ****/
+                if (reader["c1"].ToString() == "1")
+                {
+                    Committee3.Text = "Approve";
+                    Committee3.ForeColor = System.Drawing.Color.Green;
+                }
+                else if (reader["c1"].ToString() == "0")
+                {
+                    Committee3.Text = "wait";
+                    Committee3.ForeColor = System.Drawing.Color.Yellow;
+                }
+                else if (reader["status"].ToString() == "Inject")
+                {
+                    Committee3.Text = "Inject";
+                    Committee3.ForeColor = System.Drawing.Color.Red;
+                }
+
+                /***** Commit2 ****/
+                if (reader["c2"].ToString() == "1")
+                {
+                    Committee4.Text = "Approve";
+                    Committee4.ForeColor = System.Drawing.Color.Green;
+                }
+                else if (reader["c2"].ToString() == "0")
+                {
+                    Committee4.Text = "wait";
+                    Committee4.ForeColor = System.Drawing.Color.Yellow;
+                }
+                else if (reader["status"].ToString() == "Inject")
+                {
+                    Committee4.Text = "Inject";
+                    Committee4.ForeColor = System.Drawing.Color.Red;
+                }
+
+                /***** Commit3 ****/
+                if (reader["c3"].ToString() == "1")
+                {
+                    Committee5.Text = "Approve";
+                    Committee5.ForeColor = System.Drawing.Color.Green;
+                }
+                else if (reader["c3"].ToString() == "0")
+                {
+                    Committee5.Text = "wait";
+                    Committee5.ForeColor = System.Drawing.Color.Yellow;
+                }
+                else if (reader["status"].ToString() == "Inject")
+                {
+                    Committee5.Text = "Inject";
+                    Committee5.ForeColor = System.Drawing.Color.Red;
+                }
+            }
+            con.Close();
+        }
+
         private void checkStatus()
         {
             string checkStatus = Session["tStatus"].ToString();
@@ -285,8 +352,12 @@ namespace sproject
                 {
                     error2.Text = "";
                     teacherCMD();
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"Success! ->Form3\");", true);
-                    //Response.Redirect("HomeTeacher.aspx");
+                    //alert
+                    Response.Write("<script type='text/javascript'>");
+                    Response.Write("alert('Success! ->Form3');");
+                    Response.Write("document.location.href='CPE03_teacher.aspx';");
+                    Response.Write("</script>");
+
                 }
                 else { error2.Text = "ไม่สามารถดำเนินการได้ เนื่องจากกรรมการยังไม่ครบ 3 ท่าน"; }
             }
@@ -328,15 +399,14 @@ namespace sproject
             string constr = WebConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString;
             SqlConnection con = new SqlConnection(constr);
 
-            string whatCommit = Session["whatCommittee"].ToString();
-            //Label2.Text = whatCommit;
+            string whatCommitt = Session["whatCommittee"].ToString();
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
 
-            if (whatCommit == "1")
+            if (whatCommitt == "1")
             {
                 con.Open();
 
-                SqlCommand com = new SqlCommand("UPDATE CPE03 SET PID = '" + Session["whatPID"].ToString() + "',c1='1' WHERE PID = '" + Session["whatPID"].ToString() + "' ", con);
+                SqlCommand com = new SqlCommand("UPDATE CPE03 SET c1='1' WHERE PID = '" + Session["whatPID"].ToString() + "' ", con);
                 com.ExecuteNonQuery();
 
                 //SqlCommand com1 = new SqlCommand("INSERT INTO history VALUES(" + Session["whatPID"].ToString() + ", '" + PNameTH.Text + "', '3', '" + Session["loginSID"].ToString() + "', 'Approve', '" + date + "', 'wait'  )", con);
@@ -344,11 +414,11 @@ namespace sproject
 
                 con.Close();
             }
-            else if (whatCommit == "2")
+            else if (whatCommitt == "2")
             {
                 con.Open();
 
-                SqlCommand com = new SqlCommand("UPDATE CPE03 SET PID = '" + Session["whatPID"].ToString() + "',c2='1' WHERE PID = '" + Session["whatPID"].ToString() + "' ", con);
+                SqlCommand com = new SqlCommand("UPDATE CPE03 SET c2='1' WHERE PID = '" + Session["whatPID"].ToString() + "' ", con);
                 com.ExecuteNonQuery();
 
                 //SqlCommand com1 = new SqlCommand("INSERT INTO history VALUES(" + Session["whatPID"].ToString() + ", '" + PNameTH.Text + "', '3', '" + Session["loginSID"].ToString() + "', 'Approve', '" + date + "', 'wait'  )", con);
@@ -356,11 +426,11 @@ namespace sproject
 
                 con.Close();
             }
-            else if (whatCommit == "3")
+            else if (whatCommitt == "3")
             {
                 con.Open();
 
-                SqlCommand com = new SqlCommand("UPDATE CPE03 SET PID = '" + Session["whatPID"].ToString() + "',c3='1' WHERE PID = '" + Session["whatPID"].ToString() + "' ", con);
+                SqlCommand com = new SqlCommand("UPDATE CPE03 SET c3='1' WHERE PID = '" + Session["whatPID"].ToString() + "' ", con);
                 com.ExecuteNonQuery();
 
                 //SqlCommand com1 = new SqlCommand("INSERT INTO history VALUES(" + Session["whatPID"].ToString() + ", '" + PNameTH.Text + "', '3', '" + Session["loginSID"].ToString() + "', 'Approve', '" + date + "', 'wait'  )", con);

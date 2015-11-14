@@ -31,6 +31,10 @@ namespace sproject
             {
                 Response.Redirect("CPE04_teacher.aspx");
             }
+            else if (whatForm == "5")
+            {
+                Response.Redirect("CPE05_teacher.aspx");
+            }
             else
             {
                 Response.Redirect("construct.aspx");

@@ -18,6 +18,7 @@ namespace sproject
             Label1.Text = Session["LoginName"].ToString();
             if (!IsPostBack)
             {
+                isApprove();
                 FillData();
                 Fillradio();
                 FillCPE04();
@@ -26,6 +27,31 @@ namespace sproject
             string s = Session["whatPID"].ToString();
             Session["sesPID"] = s;
             
+        }
+
+        private void isApprove()
+        {
+            string constr = WebConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString;
+            SqlConnection con = new SqlConnection(constr);
+            con.Open();
+            SqlCommand cmd3 = new SqlCommand("SELECT status FROM CPE04 WHERE PID=" + Session["whatPID"].ToString() + " ", con);
+            SqlDataReader reader3 = cmd3.ExecuteReader();
+            while (reader3.Read())
+            {
+                string stat = reader3["status"].ToString();
+                if (stat == "wait")
+                {
+                    Button3.Enabled = true;
+                    Button2.Enabled = true;
+                    //checkStatus();
+                }
+                else if (stat == "approve" || stat == "reject")
+                {
+                    Button3.Enabled = false;
+                    Button2.Enabled = false;
+                }
+            }
+            con.Close();
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
@@ -157,7 +183,7 @@ namespace sproject
             string s2 = "";
             string s3 = "";
             string s4 = "", s5 = "", s6 = "";
-            string PID = "";
+            //string PID = "";
             if (RadioButton1.Checked == true)
             {
                 s1 = "เหมาะสม";
@@ -218,19 +244,26 @@ namespace sproject
             dtAd = new SqlDataAdapter("SELECT * FROM CPE04_data WHERE PID='" + Session["whatPID"] + "' ", con);
             dtAd.Fill(dt);
             rowCount = dt.Rows.Count;
+            if (RadioButton1.Checked == false && RadioButton2.Checked == false)
+            {
+                error1.Text = "กรุณากรอกผลการประเมิน";
+            }
+            else
+            {
+                if (rowCount == 0)
+                {
+                    SqlCommand com = new SqlCommand("INSERT INTO CPE04_data VALUES(" + Session["whatPID"] + ", '" + s1 + "', '" + s2 + "', '" + s3 + "', '" + s4 + "', '" + s5 + "', '" + s6 + "')", con);
+                    com.ExecuteNonQuery();
+                }
+                else if (rowCount > 0)
+                {
+                    SqlCommand com2 = new SqlCommand("UPDATE CPE04_data SET PID= " + Session["whatPID"] + ", NStudent='" + s1 + "', Provenance='" + s2 + "', Purpose='" + s3 + "', Theore='" + s4 + "',Convenience='" + s5 + "',scope='" + s6 + "' WHERE PID = '" + Session["whatPID"] + "'  ", con);
+                    com2.ExecuteNonQuery();
+                    con.Close();
+                }
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"Success! ->Form4\");", true);
+            }
 
-            if (rowCount == 0)
-            {
-                SqlCommand com = new SqlCommand("INSERT INTO CPE04_data VALUES(" + Session["whatPID"] + ", '" + s1 + "', '" + s2 + "', '" + s3 + "', '" + s4 + "', '" + s5 + "', '" + s6 + "')", con);
-                com.ExecuteNonQuery(); 
-            }
-            else if (rowCount >0 )
-            {
-                SqlCommand com2 = new SqlCommand("UPDATE CPE04_data SET PID= " + Session["whatPID"] + ", NStudent='" + s1 + "', Provenance='" + s2 + "', Purpose='" + s3 + "', Theore='" + s4 + "',Convenience='" + s5 + "',scope='" + s6 + "' WHERE PID = '" + Session["whatPID"] + "'  ", con);
-                com2.ExecuteNonQuery();
-                con.Close(); 
-            }
-   
         }
 
         private void AddCPE04()
@@ -287,21 +320,24 @@ namespace sproject
                         }
                         else if (rowCount > 0)
                         {
-                            SqlCommand com2 = new SqlCommand("UPDATE CPE04 SET PID= " + PID + ",date='" + date + "',Suggest='" + txtbox + "', StatusA='" + s + "' WHERE PID = '" + PID + "' ", con);
+                            SqlCommand com2 = new SqlCommand("UPDATE CPE04 SET PID= " + PID + ",status='wait',date='" + date + "',Suggest='" + txtbox + "', StatusA='" + s + "' WHERE PID = '" + PID + "' ", con);
                             com2.ExecuteNonQuery();
                         }
+                        error3.Text = "";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"Success! ->Form4\");", true);
                 }
                 else
                 { error3.Text = "กรุณากรอกความเห็นของอาจารย์ผู้ประเมิณ"; }
+                error2.Text = "";
             }
             else
             { error2.Text = "กรุณากรอกข้อเสนอแนะ"; }
 
             if (CheckBox6.Checked == true || CheckBox7.Checked == true || CheckBox8.Checked == true || CheckBox9.Checked == true || CheckBox10.Checked == true)
             {
-                SqlCommand com3 = new SqlCommand("UPDATE CPE04 SET PID= " + PID + ",date='" + date + "', StatusC='" + a + "' WHERE PID = '" + PID + "' ", con);
+                SqlCommand com3 = new SqlCommand("UPDATE CPE04 SET PID= " + PID + ",status='wait',date='" + date + "', StatusC='" + a + "' WHERE PID = '" + PID + "' ", con);
                 com3.ExecuteNonQuery();
-                
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"Success! ->Form4\");", true);
             }
 
         }
@@ -409,18 +445,18 @@ namespace sproject
         protected void Button3_Click(object sender, EventArgs e)
         {
             string checkStatus = Session["tStatus"].ToString();
-            string script = "alert(\"Success! ->Form4\");";
+            //string script = "alert(\"Success! ->Form4\");";
             if (checkStatus == "0")
             {
                 Addratio();
                 AddCPE04();
-                ScriptManager.RegisterStartupScript(this, GetType(),"ServerControlScript", script, true);
+                //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"Success! ->Form4\");", true);
             }
             else if (checkStatus == "2")
             {
                 AddCPE04();
-                ScriptManager.RegisterStartupScript(this, GetType(),"ServerControlScript", script, true);
-            }
+               // ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"Success! ->Form4\");", true);
+            } 
           
         }
 

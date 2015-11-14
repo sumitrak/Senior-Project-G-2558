@@ -109,6 +109,27 @@ namespace sproject
                 CPE04Btn.BackColor = System.Drawing.Color.Yellow;
             }
 
+            //CPE05
+
+            string status5 = "";
+            con.Open();
+            SqlCommand com5 = new SqlCommand(" SELECT status FROM CPE05 WHERE PID='" + Session["sesPID"] + "' ", con);
+            SqlDataReader reader6 = com5.ExecuteReader();
+            while (reader6.Read())
+            {
+                status5 = reader6["status"].ToString();
+            }
+            Session["SCPE05"] = status5;
+            con.Close();
+            if (status5 == "approve")
+            {
+                CPE05Btn.BackColor = System.Drawing.Color.LightGreen;
+            }
+            else if (status5 == "wait")
+            {
+                CPE05Btn.BackColor = System.Drawing.Color.Yellow;
+            }
+
         }
 
         private void checkStatus()
