@@ -10,7 +10,7 @@
 namespace sproject {
     
     
-    public partial class CPE05 {
+    public partial class CPE05_teacher {
         
         /// <summary>
         /// form1 control.
@@ -389,15 +389,6 @@ namespace sproject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox1;
-        
-        /// <summary>
-        /// error3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label error3;
         
         /// <summary>
         /// CheckBox5 control.

@@ -159,7 +159,8 @@
 UNION SELECT project.PID, project.PNameTH, CPE02.FormNo, CPE02.status, CPE02.date FROM CPE02 INNER JOIN project ON CPE02.PID = project.PID WHERE (project.PID = @formPID)
 UNION SELECT project.PID, project.PNameTH, CPE03.FormNo, CPE03.status, CPE03.date FROM CPE03 INNER JOIN project ON CPE03.PID = project.PID WHERE (project.PID = @formPID)
 UNION SELECT project.PID, project.PNameTH, CPE04.FormNo, CPE04.status, CPE04.date FROM CPE04 INNER JOIN project ON CPE04.PID = project.PID WHERE (project.PID = @formPID)
-UNION SELECT project.PID, project.PNameTH, CPE05.FormNo, CPE05.status, CPE05.date FROM CPE05 INNER JOIN project ON CPE05.PID = project.PID WHERE (project.PID = @formPID)">
+UNION SELECT project.PID, project.PNameTH, CPE05.FormNo, CPE05.status, CPE05.date FROM CPE05 INNER JOIN project ON CPE05.PID = project.PID WHERE (project.PID = @formPID)
+UNION SELECT project.PID, project.PNameTH, CPE06.FormNo, CPE06.status, CPE06.date FROM CPE06 INNER JOIN project ON CPE06.PID = project.PID WHERE (project.PID = @formPID)">
                         <SelectParameters>
                             <asp:QueryStringParameter Name="formPID" QueryStringField="PID" />
                         </SelectParameters>

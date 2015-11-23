@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CPE05.aspx.cs" Inherits="sproject.CPE05" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CPE05_teacher.aspx.cs" Inherits="sproject.CPE05_teacher" %>
 
 <!DOCTYPE html>
 
@@ -192,7 +192,7 @@
             <div class="x" style="width: 85px; height: 25px;">
             </div>
             <asp:LinkButton CssClass="x" ID="LinkButton1" runat="server" ForeColor="White" Width="112px" OnClick="LinkButton1_Click" >หน้าแรก</asp:LinkButton>
-            <asp:LinkButton CssClass="x" ID="LinkButton2" runat="server" ForeColor="White" OnClick="LinkButton2_Click1">แบบฟอร์ม</asp:LinkButton>
+            <asp:LinkButton CssClass="x" ID="LinkButton2" runat="server" ForeColor="White" OnClick="LinkButton2_Click1">คำร้องขอ</asp:LinkButton>
            
 
             <div style="float:right; width:50%; height: 27px;">
@@ -453,37 +453,37 @@
                         <tr>
                             <td class="auto-style14">1.&nbsp; ความก้าวหน้าของการดำเนินงานเทียบกับแผน</td>
                             <td class="auto-style13">
-                                <asp:RadioButton ID="RadioButton1" runat="server" Text=" " GroupName="Group1" Enabled="False"/>
+                                <asp:RadioButton ID="RadioButton1" runat="server" Text=" " GroupName="Group1"/>
                             </td>
                             <td class="auto-style12">
-                                <asp:RadioButton ID="RadioButton2" runat="server" Text=" " GroupName="Group1" Enabled="False"/>
+                                <asp:RadioButton ID="RadioButton2" runat="server" Text=" " GroupName="Group1"/>
                             </td>
                         </tr>
                         <tr>
                             <td class="auto-style14">2.&nbsp; ความสมบูรณ์ของรายงานความก้าวหน้า</td>
                             <td class="auto-style13">
-                                <asp:RadioButton ID="RadioButton3" runat="server" Text=" " GroupName="Group1" Enabled="False"/>
+                                <asp:RadioButton ID="RadioButton3" runat="server" Text=" " GroupName="Group2"/>
                             </td>
                             <td class="auto-style12">
-                                <asp:RadioButton ID="RadioButton4" runat="server" Text=" " GroupName="Group1" Enabled="False"/>
+                                <asp:RadioButton ID="RadioButton4" runat="server" Text=" " GroupName="Group2"/>
                             </td>
                         </tr>
                         <tr>
                             <td class="auto-style15">3.&nbsp; ความรู้ความเข้าใจของนิสิตเกี่ยวกับโครงงาน</td>
                             <td class="auto-style16">
-                                <asp:RadioButton ID="RadioButton5" runat="server" Text=" " GroupName="Group1" Enabled="False"/>
+                                <asp:RadioButton ID="RadioButton5" runat="server" Text=" " GroupName="Group3"/>
                             </td>
                             <td class="auto-style17">
-                                <asp:RadioButton ID="RadioButton6" runat="server" Text=" " GroupName="Group1" Enabled="False"/>
+                                <asp:RadioButton ID="RadioButton6" runat="server" Text=" " GroupName="Group3"/>
                             </td>
                         </tr>
                         <tr>
                             <td class="auto-style14">4.&nbsp; การแบ่งและการทำงานเป็นทีม ( กรณีมีนิสิตทำงานมากกว่า 1 คน )</td>
                             <td class="auto-style13">
-                                <asp:RadioButton ID="RadioButton7" runat="server" Text=" " GroupName="Group1" Enabled="False"/>
+                                <asp:RadioButton ID="RadioButton7" runat="server" Text=" " GroupName="Group4"/>
                             </td>
                             <td class="auto-style12">
-                                <asp:RadioButton ID="RadioButton8" runat="server" Text=" " GroupName="Group1" Enabled="False"/>
+                                <asp:RadioButton ID="RadioButton8" runat="server" Text=" " GroupName="Group4"/>
                             </td>
                         </tr>
                         </table>
@@ -504,15 +504,14 @@
             <tr>
                 <td class="auto-style1">&nbsp;</td>
                 <td class="auto-style2">
-                    <asp:TextBox ID="TextBox1" runat="server" Height="119px" Width="689px" Enabled="False"></asp:TextBox>
+                    <asp:TextBox ID="TextBox1" runat="server" Height="119px" Width="689px"></asp:TextBox>
                 </td>
                 <td class="auto-style3">&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style6"></td>
                 <td class="auto-style7">
-                    <asp:Label ID="error3" runat="server" ForeColor="Red"></asp:Label>
-                </td>
+                    &nbsp;</td>
                 <td class="auto-style6"></td>
             </tr>
             <tr>
@@ -530,10 +529,10 @@
                         </tr>
                         <tr>
                             <td class="auto-style20">
-                                <asp:CheckBox ID="CheckBox5" runat="server" Text="ผ่าน" Enabled="False" />
+                                <asp:CheckBox ID="CheckBox5" runat="server" Text="ผ่าน" />
                             </td>
                             <td class="auto-style19">
-                                <asp:CheckBox ID="CheckBox10" runat="server" Text="ไม่ผ่าน" Enabled="False" />
+                                <asp:CheckBox ID="CheckBox10" runat="server" Text="ไม่ผ่าน" />
                             </td>
                         </tr>
                         </table>
@@ -554,7 +553,7 @@
                     <div style="height: 32px; text-align: center">
                         <div style="float:left; text-align:center; width: 239px;">
                            
-                            <asp:Button ID="Button1" runat="server" Text="ส่ง" Width="60px" OnClick="Button1_Click"  />
+                            <asp:Button ID="Button1" runat="server" Text="บันทึก" Width="60px" OnClick="Button1_Click"  />
                            
                         </div>
                         <div style="float:left; text-align:center; width: 132px; height: 21px;">

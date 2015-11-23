@@ -364,6 +364,33 @@ namespace sproject {
         protected global::System.Web.UI.WebControls.DropDownList DropDownList3;
         
         /// <summary>
+        /// Committee3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Committee3;
+        
+        /// <summary>
+        /// Committee4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Committee4;
+        
+        /// <summary>
+        /// Committee5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Committee5;
+        
+        /// <summary>
         /// Button1 control.
         /// </summary>
         /// <remarks>

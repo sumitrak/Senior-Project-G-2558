@@ -148,11 +148,11 @@
                         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" Width="560px" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" OnPageIndexChanging="GridView1_PageIndexChanging">
                             <AlternatingRowStyle BackColor="White" />
                             <Columns>
-                            <asp:HyperLinkField DataNavigateUrlFields="PID" DataNavigateUrlFormatString="detailProject.aspx?PID={0}" Text="รายละเอียด" />
-                            <asp:HyperLinkField DataNavigateUrlFields="PID" DataNavigateUrlFormatString="tSeeHistory.aspx?PID={0}" Text="ประวัติ" />
                                 <asp:BoundField DataField="PID" HeaderText="รหัสโครงงาน" ReadOnly="True" SortExpression="PID" />
                                 <asp:BoundField DataField="PNameTH" HeaderText="ชื่อโครงงานTH" ReadOnly="True" SortExpression="PNameTH" />
                                 <asp:BoundField DataField="PNameENG" HeaderText="ชื่อโครงงานEN" ReadOnly="True" SortExpression="PNameENG" />
+                            <asp:HyperLinkField DataNavigateUrlFields="PID" DataNavigateUrlFormatString="detailProject.aspx?PID={0}" Text="รายละเอียด" />
+                            <asp:HyperLinkField DataNavigateUrlFields="PID" DataNavigateUrlFormatString="tSeeHistory.aspx?PID={0}" Text="ประวัติ" />
                             </Columns>
                             <EditRowStyle BackColor="#2461BF" />
                             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />

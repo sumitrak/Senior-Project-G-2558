@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Web;
 using System.Web.Configuration;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -16,10 +17,9 @@ namespace sproject
         public string whatCommit = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-            Label1.Text = Session["loginName"].ToString();
-
             if (!IsPostBack)
             {
+                Label1.Text = Session["loginName"].ToString();
                 WhatDrop();
                 Session["whatCommittee"] = whatCommit;
                 FillDropDownList();
@@ -304,6 +304,20 @@ namespace sproject
 
         protected void LinkButton3_Click(object sender, EventArgs e)
         {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+
+            // clear authentication cookie
+            HttpCookie cookie1 = new HttpCookie(FormsAuthentication.FormsCookieName, "");
+            cookie1.Expires = DateTime.Now.AddYears(-1);
+            Response.Cookies.Add(cookie1);
+
+            // clear session cookie (not necessary for your current problem but i would recommend you do it anyway)
+            HttpCookie cookie2 = new HttpCookie("ASP.NET_SessionId", "");
+            cookie2.Expires = DateTime.Now.AddYears(-1);
+            Response.Cookies.Add(cookie2);
+
+            FormsAuthentication.RedirectToLoginPage();
             Response.Redirect("index.aspx");
         }
 
@@ -409,6 +423,8 @@ namespace sproject
                 SqlCommand com = new SqlCommand("UPDATE CPE03 SET c1='1' WHERE PID = '" + Session["whatPID"].ToString() + "' ", con);
                 com.ExecuteNonQuery();
 
+                SqlCommand com1 = new SqlCommand("UPDATE HomeTeacher SET dateC1='"+date+"' WHERE PID = '" + Session["whatPID"].ToString() + "' ", con);
+                com1.ExecuteNonQuery();
                 //SqlCommand com1 = new SqlCommand("INSERT INTO history VALUES(" + Session["whatPID"].ToString() + ", '" + PNameTH.Text + "', '3', '" + Session["loginSID"].ToString() + "', 'Approve', '" + date + "', 'wait'  )", con);
                 //com1.ExecuteNonQuery();
 
@@ -421,6 +437,9 @@ namespace sproject
                 SqlCommand com = new SqlCommand("UPDATE CPE03 SET c2='1' WHERE PID = '" + Session["whatPID"].ToString() + "' ", con);
                 com.ExecuteNonQuery();
 
+                SqlCommand com1 = new SqlCommand("UPDATE HomeTeacher SET dateC2='" + date + "' WHERE PID = '" + Session["whatPID"].ToString() + "' ", con);
+                com1.ExecuteNonQuery();
+
                 //SqlCommand com1 = new SqlCommand("INSERT INTO history VALUES(" + Session["whatPID"].ToString() + ", '" + PNameTH.Text + "', '3', '" + Session["loginSID"].ToString() + "', 'Approve', '" + date + "', 'wait'  )", con);
                 //com1.ExecuteNonQuery();
 
@@ -432,6 +451,9 @@ namespace sproject
 
                 SqlCommand com = new SqlCommand("UPDATE CPE03 SET c3='1' WHERE PID = '" + Session["whatPID"].ToString() + "' ", con);
                 com.ExecuteNonQuery();
+
+                SqlCommand com1 = new SqlCommand("UPDATE HomeTeacher SET dateC3='" + date + "' WHERE PID = '" + Session["whatPID"].ToString() + "' ", con);
+                com1.ExecuteNonQuery();
 
                 //SqlCommand com1 = new SqlCommand("INSERT INTO history VALUES(" + Session["whatPID"].ToString() + ", '" + PNameTH.Text + "', '3', '" + Session["loginSID"].ToString() + "', 'Approve', '" + date + "', 'wait'  )", con);
                 //com1.ExecuteNonQuery();
@@ -487,6 +509,9 @@ namespace sproject
 
             SqlCommand com = new SqlCommand("UPDATE CPE03 SET status= 'wait' WHERE PID = '" + Session["whatPID"].ToString() + "' ", con);
             com.ExecuteNonQuery();
+
+            SqlCommand com2 = new SqlCommand("UPDATE HomeTeacher SET dateAd='" + date + "' WHERE PID = '" + Session["whatPID"].ToString() + "' ", con);
+            com2.ExecuteNonQuery();
 
             SqlCommand com1 = new SqlCommand("INSERT INTO history VALUES(" + Session["whatPID"].ToString() + ", '" + PNameTH.Text + "', '3', '" + Session["loginSID"].ToString() + "', 'Add committee', '" + date + "', 'wait'  )", con);
             com1.ExecuteNonQuery();

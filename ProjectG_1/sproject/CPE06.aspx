@@ -427,7 +427,7 @@
                         </tr>
                         <tr>
                             <td class="auto-style20">
-                                <asp:CheckBox ID="CheckBox5" runat="server" Text="เห็นสมควรให่สอบโครงงานได้" />
+                                <asp:CheckBox ID="CheckBox5" runat="server" Text="เห็นสมควรให้สอบโครงงานได้" />
                             </td>
                             <td class="auto-style19">
                                 <asp:CheckBox ID="CheckBox10" runat="server" Text="ยังไม่สมควรให้สอบโครงงาน" />

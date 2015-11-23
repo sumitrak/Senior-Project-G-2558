@@ -22,6 +22,7 @@ namespace sproject
             if (!IsPostBack)
             {
                 FillDropDownList();
+                FillCommittee();
                 FillData();
                 haveForm();
                 if (Status03 == "approve")
@@ -52,6 +53,70 @@ namespace sproject
 
                 con.Close();            
             }
+        }
+
+        private void FillCommittee()
+        {
+            string constr = WebConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString;
+            SqlConnection con = new SqlConnection(constr);
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM CPE03 WHERE  PID = '" + Session["sesPID"].ToString() + "' ", con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                /***** Commit1 ****/
+                if (reader["c1"].ToString() == "1")
+                {
+                    Committee3.Text = "Approve";
+                    Committee3.ForeColor = System.Drawing.Color.Green;
+                }
+                else if (reader["c1"].ToString() == "0")
+                {
+                    Committee3.Text = "wait";
+                    Committee3.ForeColor = System.Drawing.Color.Yellow;
+                }
+                else if (reader["status"].ToString() == "Inject")
+                {
+                    Committee3.Text = "Inject";
+                    Committee3.ForeColor = System.Drawing.Color.Red;
+                }
+
+                /***** Commit2 ****/
+                if (reader["c2"].ToString() == "1")
+                {
+                    Committee4.Text = "Approve";
+                    Committee4.ForeColor = System.Drawing.Color.Green;
+                }
+                else if (reader["c2"].ToString() == "0")
+                {
+                    Committee4.Text = "wait";
+                    Committee4.ForeColor = System.Drawing.Color.Yellow;
+                }
+                else if (reader["status"].ToString() == "Inject")
+                {
+                    Committee4.Text = "Inject";
+                    Committee4.ForeColor = System.Drawing.Color.Red;
+                }
+
+                /***** Commit3 ****/
+                if (reader["c3"].ToString() == "1")
+                {
+                    Committee5.Text = "Approve";
+                    Committee5.ForeColor = System.Drawing.Color.Green;
+                }
+                else if (reader["c3"].ToString() == "0")
+                {
+                    Committee5.Text = "wait";
+                    Committee5.ForeColor = System.Drawing.Color.Yellow;
+                }
+                else if (reader["status"].ToString() == "Inject")
+                {
+                    Committee5.Text = "Inject";
+                    Committee5.ForeColor = System.Drawing.Color.Red;
+                }
+            }
+            con.Close();
         }
 
         private void FillDropDownList()

@@ -27,6 +27,7 @@ namespace sproject
                                                     + "UNION SELECT project.PID, project.PNameTH, CPE03.FormNo, CPE03.status, CPE03.date FROM CPE03 INNER JOIN project ON CPE03.PID = project.PID WHERE ((project.advisorID = '" + Session["loginSID"] + "') OR (project.coAdvisorID = '" + Session["loginSID"] + "')) and CPE03.status='wait' "
                                                     + "UNION SELECT project.PID, project.PNameTH, CPE04.FormNo, CPE04.status, CPE04.date FROM CPE04 INNER JOIN project ON CPE04.PID = project.PID WHERE ((project.advisorID = '" + Session["loginSID"] + "') OR (project.coAdvisorID = '" + Session["loginSID"] + "')) and CPE04.status='wait' "
                                                     + "UNION SELECT project.PID, project.PNameTH, CPE05.FormNo, CPE05.status, CPE05.date FROM CPE05 INNER JOIN project ON CPE05.PID = project.PID WHERE ((project.advisorID = '" + Session["loginSID"] + "') OR (project.coAdvisorID = '" + Session["loginSID"] + "')) and CPE05.status='wait' "
+                                                    + "UNION SELECT project.PID, project.PNameTH, CPE06.FormNo, CPE06.status, CPE06.date FROM CPE06 INNER JOIN project ON CPE06.PID = project.PID WHERE ((project.advisorID = '" + Session["loginSID"] + "') OR (project.coAdvisorID = '" + Session["loginSID"] + "')) and CPE06.status='wait' "
                                                     + "ORDER BY date DESC ", con);
                 DataTable dt = new DataTable();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -67,6 +68,7 @@ namespace sproject
                                                     + "UNION SELECT project.PID, project.PNameTH, CPE03.FormNo, CPE03.status, CPE03.date FROM CPE03 INNER JOIN project ON CPE03.PID = project.PID WHERE ((project.advisorID = '" + Session["loginSID"] + "') OR (project.coAdvisorID = '" + Session["loginSID"] + "')) and CPE03.status='wait' "
                                                     + "UNION SELECT project.PID, project.PNameTH, CPE04.FormNo, CPE04.status, CPE04.date FROM CPE04 INNER JOIN project ON CPE04.PID = project.PID WHERE ((project.advisorID = '" + Session["loginSID"] + "') OR (project.coAdvisorID = '" + Session["loginSID"] + "')) and CPE04.status='wait' "
                                                     + "UNION SELECT project.PID, project.PNameTH, CPE05.FormNo, CPE05.status, CPE05.date FROM CPE05 INNER JOIN project ON CPE05.PID = project.PID WHERE ((project.advisorID = '" + Session["loginSID"] + "') OR (project.coAdvisorID = '" + Session["loginSID"] + "')) and CPE05.status='wait' "
+                                                    + "UNION SELECT project.PID, project.PNameTH, CPE06.FormNo, CPE06.status, CPE06.date FROM CPE06 INNER JOIN project ON CPE06.PID = project.PID WHERE ((project.advisorID = '" + Session["loginSID"] + "') OR (project.coAdvisorID = '" + Session["loginSID"] + "')) and CPE06.status='wait' "
                                                     + "ORDER BY date DESC ", con);
                 DataTable dt = new DataTable();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);

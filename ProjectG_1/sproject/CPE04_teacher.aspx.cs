@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Configuration;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -64,8 +65,22 @@ namespace sproject
             Response.Redirect("Request.aspx");
         }
 
-        protected void LinkButton3_Click1(object sender, EventArgs e)
+        protected void LinkButton3_Click1(object sender, EventArgs e)   //logout
         {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+
+            // clear authentication cookie
+            HttpCookie cookie1 = new HttpCookie(FormsAuthentication.FormsCookieName, "");
+            cookie1.Expires = DateTime.Now.AddYears(-1);
+            Response.Cookies.Add(cookie1);
+
+            // clear session cookie (not necessary for your current problem but i would recommend you do it anyway)
+            HttpCookie cookie2 = new HttpCookie("ASP.NET_SessionId", "");
+            cookie2.Expires = DateTime.Now.AddYears(-1);
+            Response.Cookies.Add(cookie2);
+
+            FormsAuthentication.RedirectToLoginPage();
             Response.Redirect("index.aspx");
         }
 
@@ -322,6 +337,9 @@ namespace sproject
                         {
                             SqlCommand com2 = new SqlCommand("UPDATE CPE04 SET PID= " + PID + ",status='wait',date='" + date + "',Suggest='" + txtbox + "', StatusA='" + s + "' WHERE PID = '" + PID + "' ", con);
                             com2.ExecuteNonQuery();
+
+                            SqlCommand com1 = new SqlCommand("UPDATE HomeTeacher SET dateA='" + date + "' WHERE PID = '" + Session["whatPID"].ToString() + "' ", con);
+                            com1.ExecuteNonQuery();
                         }
                         error3.Text = "";
                         ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"Success! ->Form4\");", true);
@@ -337,6 +355,9 @@ namespace sproject
             {
                 SqlCommand com3 = new SqlCommand("UPDATE CPE04 SET PID= " + PID + ",status='wait',date='" + date + "', StatusC='" + a + "' WHERE PID = '" + PID + "' ", con);
                 com3.ExecuteNonQuery();
+
+                SqlCommand com1 = new SqlCommand("UPDATE HomeTeacher SET dateC1='" + date + "' WHERE PID = '" + Session["whatPID"].ToString() + "' ", con);
+                com1.ExecuteNonQuery();
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"Success! ->Form4\");", true);
             }
 

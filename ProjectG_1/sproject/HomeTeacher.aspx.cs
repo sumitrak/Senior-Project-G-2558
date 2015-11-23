@@ -50,7 +50,7 @@ namespace sproject
 
             con.Open();
 
-            SqlCommand cmd = new SqlCommand("SELECT PID, PNameTH, PNameENG FROM project WHERE (advisorID = '" + Session["loginSID"].ToString() + "') ", con);
+            SqlCommand cmd = new SqlCommand("SELECT project.PID, project.PNameTH, project.PNameENG FROM project INNER JOIN HomeTeacher on project.PID = HomeTeacher.PID WHERE (advisorID = '" + Session["loginSID"].ToString() + "') ORDER BY HomeTeacher.dateA DESC,project.PID ASC", con);
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
@@ -69,7 +69,8 @@ namespace sproject
             {
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT PID, PNameTH, PNameENG FROM project WHERE (advisorID = '" + Session["loginSID"].ToString() + "') ", con);
+                SqlCommand cmd = new SqlCommand("SELECT project.PID, project.PNameTH, project.PNameENG FROM project INNER JOIN HomeTeacher on project.PID = HomeTeacher.PID WHERE (advisorID = '" + Session["loginSID"].ToString() + "') ORDER BY HomeTeacher.dateA DESC,project.PID ASC ", con);
+                //SqlCommand cmd = new SqlCommand("SELECT project.PID, project.PNameTH, project.PNameENG FROM project INNER JOIN history on project.PID = history.PID WHERE (advisorID = '" + Session["loginSID"].ToString() + "') ORDER BY history.date DESC,project.PID ASC  ", con);
                 DataTable dt = new DataTable();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
@@ -82,7 +83,7 @@ namespace sproject
             {
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT PID, PNameTH, PNameENG FROM project WHERE (coAdvisorID = '" + Session["loginSID"].ToString() + "') ", con);
+                SqlCommand cmd = new SqlCommand("SELECT project.PID, project.PNameTH, project.PNameENG FROM project INNER JOIN HomeTeacher on project.PID = HomeTeacher.PID WHERE (coAdvisorID = '" + Session["loginSID"].ToString() + "') ORDER BY HomeTeacher.dateCo DESC,project.PID ASC", con);
                 DataTable dt = new DataTable();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
@@ -93,45 +94,72 @@ namespace sproject
             }
             else if (value == "2")
             {
-                //con.Open();
-                //string logID = Session["loginSID"].ToString();
-                //SqlCommand cmd = new SqlCommand("SELECT * FROM project WHERE (committee1ID = '" + Session["loginSID"].ToString() + "') OR (committee2ID = '" + Session["loginSID"].ToString() + "') OR (committee3ID = '" + Session["loginSID"].ToString() + "') ", con);
-                //SqlDataReader reader = cmd.ExecuteReader();
-                //while (reader.Read())
-                //{
-                //    if (logID == reader["committee1ID"].ToString())
-                //    {
-                //        Session["whatCommittee"] = "1";
-                //    }
-                //    else if (logID == reader["committee2ID"].ToString())
-                //    {
-                //        Session["whatCommittee"] = "2";
-                //    }
-                //    else if (logID == reader["committee3ID"].ToString())
-                //    {
-                //        Session["whatCommittee"] = "3";
-                //    }
-                //}
-                //con.Close();
+                string logID = Session["loginSID"].ToString();
+                string c1="",c2="",c3="";
 
                 /////////////////////////////////////////////////////////////
-                con.Open();
-                SqlCommand cmd2 = new SqlCommand("SELECT PID, PNameTH, PNameENG FROM project WHERE (committee1ID = '" + Session["loginSID"].ToString() + "') OR (committee2ID = '" + Session["loginSID"].ToString() + "') OR (committee3ID = '" + Session["loginSID"].ToString() + "') ", con);
-                DataTable dt = new DataTable();
-                SqlDataAdapter da = new SqlDataAdapter(cmd2);
-                da.Fill(dt);
-                GridView1.DataSource = dt;
-                GridView1.DataBind();
+                #region showHometeacher
+                //con.Open();
+                //SqlCommand cmd2 = new SqlCommand("SELECT project.PID, project.PNameTH, project.PNameENG FROM project INNER JOIN HomeTeacher on project.PID = HomeTeacher.PID WHERE (committee1ID = '" + Session["loginSID"].ToString() + "') OR (committee2ID = '" + Session["loginSID"].ToString() + "') OR (committee3ID = '" + Session["loginSID"].ToString() + "') ORDER BY HomeTeacher.dateC2 DESC,project.PID ASC", con);
+                //DataTable dt = new DataTable();
+                //SqlDataAdapter da = new SqlDataAdapter(cmd2);
+                //da.Fill(dt);
+                //GridView1.DataSource = dt;
+                //GridView1.DataBind();
+                //con.Close();
+                #endregion
 
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM project WHERE (committee1ID = '" + Session["loginSID"].ToString() + "') OR (committee2ID = '" + Session["loginSID"].ToString() + "') OR (committee3ID = '" + Session["loginSID"].ToString() + "') ", con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    c1 = reader[5].ToString();
+                    c2 = reader[6].ToString();
+                    c3 = reader[7].ToString();
+                }
                 con.Close();
 
-                //ScriptManager.RegisterStartupScript(this, this.GetType(), "Messagebox", "alert('" + Session["whatCommittee"].ToString() + "');", true); 
+
+                if(logID == c1)
+                {
+                    con.Open();
+                    SqlCommand cmd2 = new SqlCommand("SELECT project.PID, project.PNameTH, project.PNameENG FROM project INNER JOIN HomeTeacher on project.PID = HomeTeacher.PID WHERE (committee1ID = '" + Session["loginSID"].ToString() + "') OR (committee2ID = '" + Session["loginSID"].ToString() + "') OR (committee3ID = '" + Session["loginSID"].ToString() + "') ORDER BY HomeTeacher.dateC1 DESC,project.PID ASC", con);
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter da = new SqlDataAdapter(cmd2);
+                    da.Fill(dt);
+                    GridView1.DataSource = dt;
+                    GridView1.DataBind();
+                    con.Close();
+                }
+                else if (logID == c2)
+                {
+                    con.Open();
+                    SqlCommand cmd2 = new SqlCommand("SELECT project.PID, project.PNameTH, project.PNameENG FROM project INNER JOIN HomeTeacher on project.PID = HomeTeacher.PID WHERE (committee1ID = '" + Session["loginSID"].ToString() + "') OR (committee2ID = '" + Session["loginSID"].ToString() + "') OR (committee3ID = '" + Session["loginSID"].ToString() + "') ORDER BY HomeTeacher.dateC2 DESC,project.PID ASC", con);
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter da = new SqlDataAdapter(cmd2);
+                    da.Fill(dt);
+                    GridView1.DataSource = dt;
+                    GridView1.DataBind();
+                    con.Close();
+                }
+                else if (logID == c3)
+                {
+                    con.Open();
+                    SqlCommand cmd2 = new SqlCommand("SELECT project.PID, project.PNameTH, project.PNameENG FROM project INNER JOIN HomeTeacher on project.PID = HomeTeacher.PID WHERE (committee1ID = '" + Session["loginSID"].ToString() + "') OR (committee2ID = '" + Session["loginSID"].ToString() + "') OR (committee3ID = '" + Session["loginSID"].ToString() + "') ORDER BY HomeTeacher.dateC3 DESC,project.PID ASC", con);
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter da = new SqlDataAdapter(cmd2);
+                    da.Fill(dt);
+                    GridView1.DataSource = dt;
+                    GridView1.DataBind();
+                    con.Close();
+                }
             }
             else if (value == "3")
             {
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT PID, PNameTH, PNameENG FROM project ", con);
+                SqlCommand cmd = new SqlCommand("SELECT project.PID, project.PNameTH, project.PNameENG FROM project INNER JOIN HomeTeacher on project.PID = HomeTeacher.PID ORDER BY HomeTeacher.dateAd DESC,project.PID ASC", con);
                 DataTable dt = new DataTable();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);

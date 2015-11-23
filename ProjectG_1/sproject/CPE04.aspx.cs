@@ -260,6 +260,7 @@ namespace sproject
                 SqlCommand com3 = new SqlCommand(" INSERT INTO CPE05 VALUES(" + Session["sesPID"] + ",'5','wait','" + date + "','','') ", con);
                 com3.ExecuteNonQuery();
                 con.Close();
+                Button2.Enabled = false;
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"Success! ->Form4\");", true);
             }
         }
